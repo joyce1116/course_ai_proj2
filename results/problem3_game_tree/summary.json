@@ -1,0 +1,46 @@
+{
+  "best_value": 5,
+  "runs": [
+    {
+      "algorithm": "minimax",
+      "move_order": "left_to_right",
+      "best_value": 5,
+      "principal_variation": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "algorithm": "alpha_beta",
+      "move_order": "left_to_right",
+      "best_value": 5,
+      "principal_variation": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "algorithm": "minimax",
+      "move_order": "reverse",
+      "best_value": 5,
+      "principal_variation": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "algorithm": "alpha_beta",
+      "move_order": "reverse",
+      "best_value": 5,
+      "principal_variation": [
+        0,
+        0,
+        1
+      ]
+    }
+  ],
+  "expected_verified": true
+}

@@ -1,0 +1,11 @@
+{
+  "algorithm": "minimax",
+  "status": "success",
+  "best_value": 5.0,
+  "best_action": 0,
+  "principal_variation": [
+    0,
+    0,
+    1
+  ]
+}

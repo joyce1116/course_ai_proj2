@@ -1,0 +1,73 @@
+{
+  "case_id": "problem3",
+  "created_at": "2026-10-20T11:14:26.321674+08:00",
+  "python": "3.13.9",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "input_sha256": "367026dfacc04dfd9dfb10a1670ead30e07492a33668f8c522fd7bc9301f3c9c",
+  "parameters": {
+    "compare": true,
+    "trace": true
+  },
+  "inputs": {
+    "tree_structure": {
+      "is_maximizing_player": true,
+      "children": [
+        {
+          "is_maximizing_player": false,
+          "children": [
+            {
+              "is_maximizing_player": true,
+              "children": [
+                {
+                  "value": 3
+                },
+                {
+                  "value": 5
+                }
+              ]
+            },
+            {
+              "is_maximizing_player": true,
+              "children": [
+                {
+                  "value": 6
+                },
+                {
+                  "value": 9
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "is_maximizing_player": false,
+          "children": [
+            {
+              "is_maximizing_player": true,
+              "children": [
+                {
+                  "value": 6
+                },
+                {
+                  "value": 9
+                }
+              ]
+            },
+            {
+              "is_maximizing_player": true,
+              "children": [
+                {
+                  "value": 1
+                },
+                {
+                  "value": 2
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "expected_value": 5
+  }
+}

@@ -1,0 +1,397 @@
+[
+  {
+    "event": "discover",
+    "state": [
+      6,
+      6
+    ],
+    "depth": 0,
+    "details": {
+      "g": 0.0,
+      "h": 6.0,
+      "f": 6.0
+    }
+  },
+  {
+    "event": "visit",
+    "state": [
+      6,
+      6
+    ],
+    "depth": 0,
+    "details": {
+      "g": 0.0,
+      "h": 6.0,
+      "f": 6.0
+    }
+  },
+  {
+    "event": "discover",
+    "state": [
+      5,
+      6
+    ],
+    "depth": 1,
+    "details": {
+      "parent": [
+        6,
+        6
+      ],
+      "action": [
+        5,
+        6
+      ],
+      "g": 1.0,
+      "h": 5.0,
+      "f": 6.0
+    }
+  },
+  {
+    "event": "discover",
+    "state": [
+      6,
+      5
+    ],
+    "depth": 1,
+    "details": {
+      "parent": [
+        6,
+        6
+      ],
+      "action": [
+        6,
+        5
+      ],
+      "g": 1.0,
+      "h": 7.0,
+      "f": 8.0
+    }
+  },
+  {
+    "event": "visit",
+    "state": [
+      5,
+      6
+    ],
+    "depth": 1,
+    "details": {
+      "g": 1.0,
+      "h": 5.0,
+      "f": 6.0
+    }
+  },
+  {
+    "event": "discover",
+    "state": [
+      4,
+      6
+    ],
+    "depth": 2,
+    "details": {
+      "parent": [
+        5,
+        6
+      ],
+      "action": [
+        4,
+        6
+      ],
+      "g": 2.0,
+      "h": 4.0,
+      "f": 6.0
+    }
+  },
+  {
+    "event": "visit",
+    "state": [
+      4,
+      6
+    ],
+    "depth": 2,
+    "details": {
+      "g": 2.0,
+      "h": 4.0,
+      "f": 6.0
+    }
+  },
+  {
+    "event": "discover",
+    "state": [
+      4,
+      5
+    ],
+    "depth": 3,
+    "details": {
+      "parent": [
+        4,
+        6
+      ],
+      "action": [
+        4,
+        5
+      ],
+      "g": 3.0,
+      "h": 5.0,
+      "f": 8.0
+    }
+  },
+  {
+    "event": "visit",
+    "state": [
+      6,
+      5
+    ],
+    "depth": 1,
+    "details": {
+      "g": 1.0,
+      "h": 7.0,
+      "f": 8.0
+    }
+  },
+  {
+    "event": "discover",
+    "state": [
+      6,
+      4
+    ],
+    "depth": 2,
+    "details": {
+      "parent": [
+        6,
+        5
+      ],
+      "action": [
+        6,
+        4
+      ],
+      "g": 2.0,
+      "h": 8.0,
+      "f": 10.0
+    }
+  },
+  {
+    "event": "visit",
+    "state": [
+      4,
+      5
+    ],
+    "depth": 3,
+    "details": {
+      "g": 3.0,
+      "h": 5.0,
+      "f": 8.0
+    }
+  },
+  {
+    "event": "discover",
+    "state": [
+      3,
+      5
+    ],
+    "depth": 4,
+    "details": {
+      "parent": [
+        4,
+        5
+      ],
+      "action": [
+        3,
+        5
+      ],
+      "g": 4.0,
+      "h": 4.0,
+      "f": 8.0
+    }
+  },
+  {
+    "event": "discover",
+    "state": [
+      4,
+      4
+    ],
+    "depth": 4,
+    "details": {
+      "parent": [
+        4,
+        5
+      ],
+      "action": [
+        4,
+        4
+      ],
+      "g": 4.0,
+      "h": 6.0,
+      "f": 10.0
+    }
+  },
+  {
+    "event": "visit",
+    "state": [
+      3,
+      5
+    ],
+    "depth": 4,
+    "details": {
+      "g": 4.0,
+      "h": 4.0,
+      "f": 8.0
+    }
+  },
+  {
+    "event": "discover",
+    "state": [
+      2,
+      5
+    ],
+    "depth": 5,
+    "details": {
+      "parent": [
+        3,
+        5
+      ],
+      "action": [
+        2,
+        5
+      ],
+      "g": 5.0,
+      "h": 3.0,
+      "f": 8.0
+    }
+  },
+  {
+    "event": "visit",
+    "state": [
+      2,
+      5
+    ],
+    "depth": 5,
+    "details": {
+      "g": 5.0,
+      "h": 3.0,
+      "f": 8.0
+    }
+  },
+  {
+    "event": "discover",
+    "state": [
+      2,
+      6
+    ],
+    "depth": 6,
+    "details": {
+      "parent": [
+        2,
+        5
+      ],
+      "action": [
+        2,
+        6
+      ],
+      "g": 6.0,
+      "h": 2.0,
+      "f": 8.0
+    }
+  },
+  {
+    "event": "discover",
+    "state": [
+      2,
+      4
+    ],
+    "depth": 6,
+    "details": {
+      "parent": [
+        2,
+        5
+      ],
+      "action": [
+        2,
+        4
+      ],
+      "g": 6.0,
+      "h": 4.0,
+      "f": 10.0
+    }
+  },
+  {
+    "event": "visit",
+    "state": [
+      2,
+      6
+    ],
+    "depth": 6,
+    "details": {
+      "g": 6.0,
+      "h": 2.0,
+      "f": 8.0
+    }
+  },
+  {
+    "event": "discover",
+    "state": [
+      1,
+      6
+    ],
+    "depth": 7,
+    "details": {
+      "parent": [
+        2,
+        6
+      ],
+      "action": [
+        1,
+        6
+      ],
+      "g": 7.0,
+      "h": 1.0,
+      "f": 8.0
+    }
+  },
+  {
+    "event": "visit",
+    "state": [
+      1,
+      6
+    ],
+    "depth": 7,
+    "details": {
+      "g": 7.0,
+      "h": 1.0,
+      "f": 8.0
+    }
+  },
+  {
+    "event": "discover",
+    "state": [
+      0,
+      6
+    ],
+    "depth": 8,
+    "details": {
+      "parent": [
+        1,
+        6
+      ],
+      "action": [
+        0,
+        6
+      ],
+      "g": 8.0,
+      "h": 0.0,
+      "f": 8.0
+    }
+  },
+  {
+    "event": "visit",
+    "state": [
+      0,
+      6
+    ],
+    "depth": 8,
+    "details": {
+      "g": 8.0,
+      "h": 0.0,
+      "f": 8.0
+    }
+  }
+]

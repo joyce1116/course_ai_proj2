@@ -1,0 +1,6 @@
+problem3 minimax order=left_to_right: value=5, visited=15, cutoffs=0
+problem3 alpha_beta order=left_to_right: value=5, visited=14, cutoffs=1
+problem3 minimax order=reverse: value=5, visited=15, cutoffs=0
+problem3 alpha_beta order=reverse: value=5, visited=14, cutoffs=1
+problem3: all expected results verified.
+Results: D:\course_ai\project2\results\problem3_game_tree

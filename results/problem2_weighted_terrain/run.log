@@ -1,0 +1,5 @@
+problem2 h=zero: cost=7, visited=15, seconds=0.000136
+problem2 h=manhattan: cost=7, visited=11, seconds=0.000077
+problem2 path: [(0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4)]
+problem2: all expected results verified.
+Results: D:\course_ai\project2\results\problem2_weighted_terrain

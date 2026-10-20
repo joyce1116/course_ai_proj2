@@ -1,0 +1,7 @@
+﻿case_id,phase,heuristic,depth_limit,move_order,from_point,to_point,collect_trace,result_directory,algorithm,elapsed_seconds,nodes_visited,nodes_expanded,nodes_generated,terminal_nodes,depth_limit_nodes,evaluation_calls,heuristic_calls,max_depth,frontier_peak,duplicate_states,relaxations,reopened_nodes,stale_queue_entries,cutoff_events,pruned_branches,status,path_cost,best_value,solution_depth,visited_reduction_ratio,expanded_reduction_ratio,evaluation_reduction_ratio,time_speedup
+problem4,game,,2,input,,,True,depth_2/input_order/minimax,minimax,7.67e-05,17,5,17,0,12,12,0,2,,0,0,0,0,0,0,success,,-1.0,2,,,,
+problem4,game,,2,input,,,True,depth_2/input_order/alpha_beta,alpha_beta,7.19e-05,13,5,17,0,8,8,0,2,,0,0,0,0,2,4,success,,-1.0,2,0.23529411764705882,0.0,0.3333333333333333,1.066759388038943
+problem4,game,,2,reverse,,,True,depth_2/reverse_order/minimax,minimax,0.0001013,17,5,17,0,12,12,0,2,,0,0,0,0,0,0,success,,-1.0,2,,,,
+problem4,game,,2,reverse,,,True,depth_2/reverse_order/alpha_beta,alpha_beta,9.94e-05,16,5,17,0,11,11,0,2,,0,0,0,0,1,1,success,,-1.0,2,0.058823529411764705,0.0,0.08333333333333333,1.0191146881287725
+problem4,game,,2,gain,,,True,depth_2/gain_order/minimax,minimax,0.0001434,17,5,17,0,12,12,0,2,,0,0,0,0,0,0,success,,-1.0,2,,,,
+problem4,game,,2,gain,,,True,depth_2/gain_order/alpha_beta,alpha_beta,0.0001479,11,5,17,0,6,6,0,2,,0,0,0,0,3,6,success,,-1.0,2,0.35294117647058826,0.0,0.5,0.9695740365111561
