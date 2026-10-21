@@ -25,6 +25,7 @@ OUTPUT_DIRECTORIES = {
     3: "problem3_game_tree",
     4: "problem4_treasure_game",
 }
+REPEAT_COUNT = 3
 
 
 def require(condition: bool, message: str) -> None:
@@ -38,6 +39,7 @@ class ExperimentRun:
         self.collect_trace = collect_trace
         self.answers: dict[str, object] = {}
         self.metrics: list[dict] = []
+        self.timing_runs: list[dict] = []
         self.messages: list[str] = []
         self.records: list[tuple[Path, SearchResult, dict]] = []
 
@@ -84,18 +86,46 @@ class ExperimentRun:
             save_json(self.output / trace_path, result.trace)
         return row
 
+    def record_repetitions(
+        self, case_id: str, results: list[SearchResult], **parameters: object,
+    ) -> tuple[SearchResult, dict]:
+        """按每组搜索的耗时选中位数轮次；仅该轮保留完整结果和轨迹。"""
+        require(len(results) == REPEAT_COUNT, f"Expected {REPEAT_COUNT} repetitions")
+        # 耗时相同时按轮次排序，仍取排序后的中间一轮。
+        selected = sorted(range(REPEAT_COUNT),
+                          key=lambda index: (results[index].stats.elapsed_seconds, index))[REPEAT_COUNT // 2]
+        result = results[selected]
+        row = self.record(case_id, result, repeat_count=REPEAT_COUNT,
+                          selected_repetition=selected + 1, **parameters)
+        identifiers = ("case_id", "phase", "algorithm", "heuristic", "depth_limit",
+                       "move_order", "from_point", "to_point", "collect_trace", "result_directory")
+        fields = ("elapsed_seconds", "status", "path_cost", "best_value", "nodes_visited",
+                  "nodes_expanded", "nodes_generated", "evaluation_calls", "cutoff_events",
+                  "pruned_branches")
+        for index, candidate in enumerate(results):
+            metrics = candidate.metrics()
+            self.timing_runs.append({
+                **{key: row[key] for key in identifiers},
+                "repetition": index + 1,
+                "is_median": index == selected,
+                **{key: metrics[key] for key in fields},
+            })
+        return result, row
+
     def run_pathfinding(self, case_id: str, case: dict) -> None:
         module = problem1 if case_id == "problem1" else problem2
         runs = {}
         for heuristic in ("zero", "manhattan"):
-            result = module.search(case["start"], case["goal"], case["grid"],
-                                   heuristic=heuristic, collect_trace=self.collect_trace)
-            require(result.cost == case["expected_cost"], f"{case_id}: unexpected path cost")
-            require(bool(result.path) and result.path[0] == tuple(case["start"])
-                    and result.path[-1] == tuple(case["goal"]), f"{case_id}: invalid endpoints")
-            require(all(abs(a[0] - b[0]) + abs(a[1] - b[1]) == 1
-                        for a, b in zip(result.path, result.path[1:])), f"{case_id}: invalid path step")
-            row = self.record(case_id, result, heuristic=heuristic)
+            results = [module.search(case["start"], case["goal"], case["grid"],
+                                     heuristic=heuristic, collect_trace=self.collect_trace)
+                       for _ in range(REPEAT_COUNT)]
+            for result in results:
+                require(result.cost == case["expected_cost"], f"{case_id}: unexpected path cost")
+                require(bool(result.path) and result.path[0] == tuple(case["start"])
+                        and result.path[-1] == tuple(case["goal"]), f"{case_id}: invalid endpoints")
+                require(all(abs(a[0] - b[0]) + abs(a[1] - b[1]) == 1
+                            for a, b in zip(result.path, result.path[1:])), f"{case_id}: invalid path step")
+            result, row = self.record_repetitions(case_id, results, heuristic=heuristic)
             if heuristic == "manhattan":
                 row.update(compare_stats(runs["zero"].stats, result.stats))
             runs[heuristic] = result
@@ -123,10 +153,12 @@ class ExperimentRun:
         for order in (("left_to_right", "reverse") if compare else ("left_to_right",)):
             baseline = None
             for algorithm in ("minimax", "alpha_beta"):
-                result = problem3.search(root, algorithm=algorithm, order=order,
-                                         collect_trace=self.collect_trace)
-                require(result.value == case["expected_value"], "problem3: unexpected root value")
-                row = self.record("problem3", result, move_order=order)
+                results = [problem3.search(root, algorithm=algorithm, order=order,
+                                           collect_trace=self.collect_trace)
+                           for _ in range(REPEAT_COUNT)]
+                for result in results:
+                    require(result.value == case["expected_value"], "problem3: unexpected root value")
+                result, row = self.record_repetitions("problem3", results, move_order=order)
                 if baseline is None:
                     baseline = result
                 else:
@@ -141,15 +173,24 @@ class ExperimentRun:
                                     "expected_verified": True}
 
     def run_treasures(self, case: dict, compare: bool) -> None:
-        game = problem4.TreasureGame(case["grid"], case["treasure_values"],
-                                     collect_trace=self.collect_trace)
+        # 构造器内部包含 36 次独立 A* 计时，每个点对也分别选择中位数轮次。
+        games = [problem4.TreasureGame(case["grid"], case["treasure_values"],
+                                       collect_trace=self.collect_trace)
+                 for _ in range(REPEAT_COUNT)]
+        game = games[0]
         self.emit("problem4 distance matrix: " + ", ".join(game.labels))
         for label, row in zip(game.labels, game.distance_matrix()):
             self.emit(f"  {label}: {row}")
-        for (start, goal), result in game.path_searches.items():
-            require(result.status == "success", f"problem4: unreachable point pair {start}, {goal}")
-            self.record("problem4", result, phase="distance", heuristic=game.heuristic_name,
-                        from_point=start, to_point=goal)
+        for start, goal in game.path_searches:
+            results = [candidate.path_searches[start, goal] for candidate in games]
+            for result in results:
+                require(result.status == "success", f"problem4: unreachable point pair {start}, {goal}")
+            result, _ = self.record_repetitions(
+                "problem4", results, phase="distance", heuristic=game.heuristic_name,
+                from_point=start, to_point=goal,
+            )
+            game.path_searches[start, goal] = result
+            game.distances[start, goal] = int(result.cost)
 
         decisions = []
         for depth in case["depths"]:
@@ -157,15 +198,19 @@ class ExperimentRun:
             for order in (("input", "reverse", "gain") if compare else ("input",)):
                 baseline = None
                 for algorithm in ("minimax", "alpha_beta"):
-                    result = game.search(depth, algorithm=algorithm, order=order,
-                                         collect_trace=self.collect_trace)
+                    results = [game.search(depth, algorithm=algorithm, order=order,
+                                           collect_trace=self.collect_trace)
+                               for _ in range(REPEAT_COUNT)]
+                    for result in results:
+                        answer = problem4.answer(result)
+                        require(answer["best_value"] == expected["best_value"],
+                                f"problem4 H={depth}: unexpected utility")
+                        if order == "input":
+                            require(answer == expected, f"problem4 H={depth}: unexpected first target")
+                    result, row = self.record_repetitions(
+                        "problem4", results, phase="game", depth_limit=depth, move_order=order,
+                    )
                     answer = problem4.answer(result)
-                    require(answer["best_value"] == expected["best_value"],
-                            f"problem4 H={depth}: unexpected utility")
-                    if order == "input":
-                        require(answer == expected, f"problem4 H={depth}: unexpected first target")
-                    row = self.record("problem4", result, phase="game", depth_limit=depth,
-                                      move_order=order)
                     if baseline is None:
                         baseline = result
                     else:
@@ -203,6 +248,7 @@ class ExperimentRun:
             save_json(self.output / relative / "result.json", payload)
         for relative, rows in groups.items():
             save_metrics(self.output / relative / "metrics.csv", rows)
+        save_metrics(self.output / "timing_runs.csv", self.timing_runs)
         if "problem4" in self.answers:
             matrix = summary["distance_matrix"]
             labels = summary["labels"]
@@ -254,10 +300,14 @@ def main() -> int:
         save_json(output / "metadata.json", {
             "case_id": key, "created_at": now.isoformat(), "python": platform.python_version(),
             "platform": platform.platform(), "input_sha256": hashlib.sha256(raw_cases).hexdigest(),
-            "parameters": {"compare": args.compare, "trace": args.trace}, "inputs": case,
+            "parameters": {"compare": args.compare, "trace": args.trace,
+                           "repeat_count": REPEAT_COUNT, "selection": "median_elapsed_seconds"},
+            "inputs": case,
         })
         run = ExperimentRun(output, args.trace)
         try:
+            run.emit(f"{key}: {REPEAT_COUNT} repetitions per timed search; "
+                     "retaining the median elapsed_seconds run.")
             if number in (1, 2):
                 run.run_pathfinding(key, case)
             elif number == 3:

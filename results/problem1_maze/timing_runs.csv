@@ -1,0 +1,7 @@
+﻿case_id,phase,algorithm,heuristic,depth_limit,move_order,from_point,to_point,collect_trace,result_directory,repetition,is_median,elapsed_seconds,status,path_cost,best_value,nodes_visited,nodes_expanded,nodes_generated,evaluation_calls,cutoff_events,pruned_branches
+problem1,search,astar,zero,,,,,True,astar_zero,1,False,0.0001478,success,7.0,,16,15,33,0,0,0
+problem1,search,astar,zero,,,,,True,astar_zero,2,True,0.0001122,success,7.0,,16,15,33,0,0,0
+problem1,search,astar,zero,,,,,True,astar_zero,3,False,0.0001071,success,7.0,,16,15,33,0,0,0
+problem1,search,astar,manhattan,,,,,True,astar_manhattan,1,False,0.000111,success,7.0,,14,13,30,0,0,0
+problem1,search,astar,manhattan,,,,,True,astar_manhattan,2,True,0.000107,success,7.0,,14,13,30,0,0,0
+problem1,search,astar,manhattan,,,,,True,astar_manhattan,3,False,0.0001,success,7.0,,14,13,30,0,0,0

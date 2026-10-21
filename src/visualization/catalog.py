@@ -3,6 +3,7 @@
 from dataclasses import dataclass
 from pathlib import Path
 
+from .common import TIME_NOTE
 from .data import Results
 
 
@@ -37,7 +38,7 @@ def specifications(data:Results)->list[FigureSpec]:
         a=int(data.metric(n,heuristic="zero")["nodes_visited"])
         b=int(data.metric(n,heuristic="manhattan")["nodes_visited"])
         return f"{a}→{b}，减少 {(a-b)/a:.1%}"
-    time_limit="只展示开启轨迹的单次耗时，不含重复测量、误差区间或稳定速度结论。"
+    time_limit=TIME_NOTE
     path_inputs=lambda n:[meta(n,"inputs.grid、start、goal"),
         ref(n,"astar_zero/result.json","path、cost"),ref(n,"astar_manhattan/result.json","path、cost"),
         ref(n,"astar_zero/trace.json","event=visit、state、depth、details.g/h/f"),
@@ -105,8 +106,8 @@ def specifications(data:Results)->list[FigureSpec]:
             "按算法和访问顺序分别比较访问、叶子评价和本次微秒耗时。",
             "用数据判断剪枝是否减少工作，而不是仅展示相同答案。",
             "两种顺序均是 Minimax 15 次访问 / 8 次评价，对应 Alpha-Beta 14 次访问 / 7 次评价。"
-            f"逆序配置的本次耗时为 Minimax {reverse_minimax_us:.1f} µs、Alpha-Beta {reverse_alpha_beta_us:.1f} µs；"
-            "小规模下少访问一个叶子并未在该次测量中转化为更短耗时，不能据此分离剪枝管理开销与测量波动。",time_limit),
+            f"逆序配置保留的中位数轮次耗时为 Minimax {reverse_minimax_us:.1f} µs、Alpha-Beta {reverse_alpha_beta_us:.1f} µs；"
+            "3 次测量仍不足以据此分离剪枝管理开销与测量波动。",time_limit),
         FigureSpec("10_treasure_map_matrix","problem4_treasure_game","宝藏地图与距离矩阵","5. 题目四：综合题",
             [meta(4,"inputs.grid、treasure_values"),ref(4,"distance_matrix/matrix.json","labels、matrix")],
             "按 labels 排列热力矩阵，地图格子显示权值、标记和宝藏价值。",
@@ -153,10 +154,10 @@ def specifications(data:Results)->list[FigureSpec]:
         FigureSpec("17_treasure_runtime","problem4_treasure_game","寻路与博弈阶段观测时间","5. 题目四：综合题",
             [ref(4,"distance_matrix/matrix.json","labels"),
              metric(4,"phase=distance 的全部 36 行，以及 phase=game、move_order=input/reverse；elapsed_seconds、from_point、to_point、algorithm、depth_limit、collect_trace")],
-            "点对耗时画为 6×6 热力图；36 次搜索耗时求和；博弈阶段按算法、深度和顺序分组，秒转微秒。",
+            "点对中位数轮次耗时画为 6×6 热力图；36 个点对各自保留的耗时求和；博弈阶段按算法、深度和顺序分组，秒转微秒。",
             "区分可复用的距离预计算与之后的博弈决策开销。",
-            f"36 次 A* 的搜索计时之和为 {precompute_ms:.4f} ms。不同深度复用同一组距离；图中未重复计入预计算。",
-            time_limit+"搜索耗时之和不含建图与文件写入，不能冒充完整程序端到端耗时。"),
+            f"36 个点对各自中位数轮次的 A* 耗时之和为 {precompute_ms:.4f} ms。不同深度复用同一组距离；图中未重复计入预计算。",
+            time_limit+"各点对中位数之和不是预计算总耗时的中位数，也不含建图与文件写入，不能冒充完整程序端到端耗时。"),
     ]
     readings = {
         "01_maze_search": "左为 h=0，右为曼哈顿启发。绿色是访问过的状态，角标为访问序号，蓝线是最终最短路径。",
@@ -175,7 +176,7 @@ def specifications(data:Results)->list[FigureSpec]:
         "14_treasure_routes": "左图 H=2，右图 H=4。蓝色为 A、橙色为 B，实线是前两步、虚线是后两步；目标旁的圆角标是领取回合编号。",
         "15_treasure_efficiency": "左上访问次数、右上展开次数、左下评价次数、右下访问减少率。横轴按深度与访问顺序配对；前三图蓝色 Minimax、橙色 Alpha-Beta。",
         "16_treasure_pruning_depth": "上排 H=2，下排 H=4；左列是各深度的剪枝事件数，右列是跳过的直接分支数。蓝色输入顺序、橙色逆序。",
-        "17_treasure_runtime": "左侧热力矩阵是各点对 A* 的单次微秒耗时；右侧是不同深度、顺序下的博弈耗时，蓝色 Minimax、橙色 Alpha-Beta。",
+        "17_treasure_runtime": "左侧热力矩阵是各点对 A* 的中位数轮次微秒耗时；右侧是不同深度、顺序下保留的博弈耗时，蓝色 Minimax、橙色 Alpha-Beta。",
     }
     for spec in specs:
         spec.reading = readings[spec.identifier]

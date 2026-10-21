@@ -1,3 +1,4 @@
+problem3: 3 repetitions per timed search; retaining the median elapsed_seconds run.
 problem3 minimax order=left_to_right: value=5, visited=15, cutoffs=0
 problem3 alpha_beta order=left_to_right: value=5, visited=14, cutoffs=1
 problem3 minimax order=reverse: value=5, visited=15, cutoffs=0

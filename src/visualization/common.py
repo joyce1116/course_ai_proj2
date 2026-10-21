@@ -11,7 +11,7 @@ from matplotlib.patches import Rectangle
 
 BLUE, ORANGE, GREEN, RED = "#2563eb", "#d97706", "#15803d", "#dc2626"
 INK, GRAY, LIGHT = "#1f2937", "#64748b", "#e2e8f0"
-TIME_NOTE = "耗时为开启轨迹后的单次观测，无重复测量或误差区间；不据此推断稳定速度优势。"
+TIME_NOTE = "每个配置测量 3 次，保留耗时中位数轮次的完整结果；三轮简要记录见 timing_runs.csv，不据此推断稳定速度优势。"
 
 
 def configure() -> str:

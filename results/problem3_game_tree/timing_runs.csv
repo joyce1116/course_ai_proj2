@@ -1,0 +1,13 @@
+﻿case_id,phase,algorithm,heuristic,depth_limit,move_order,from_point,to_point,collect_trace,result_directory,repetition,is_median,elapsed_seconds,status,path_cost,best_value,nodes_visited,nodes_expanded,nodes_generated,evaluation_calls,cutoff_events,pruned_branches
+problem3,search,minimax,,,left_to_right,,,True,left_to_right/minimax,1,False,5.5e-05,success,,5.0,15,7,15,8,0,0
+problem3,search,minimax,,,left_to_right,,,True,left_to_right/minimax,2,True,2.66e-05,success,,5.0,15,7,15,8,0,0
+problem3,search,minimax,,,left_to_right,,,True,left_to_right/minimax,3,False,2.44e-05,success,,5.0,15,7,15,8,0,0
+problem3,search,alpha_beta,,,left_to_right,,,True,left_to_right/alpha_beta,1,False,7.1e-05,success,,5.0,14,7,15,7,1,1
+problem3,search,alpha_beta,,,left_to_right,,,True,left_to_right/alpha_beta,2,False,3.24e-05,success,,5.0,14,7,15,7,1,1
+problem3,search,alpha_beta,,,left_to_right,,,True,left_to_right/alpha_beta,3,True,3.26e-05,success,,5.0,14,7,15,7,1,1
+problem3,search,minimax,,,reverse,,,True,reverse/minimax,1,False,0.000118,success,,5.0,15,7,15,8,0,0
+problem3,search,minimax,,,reverse,,,True,reverse/minimax,2,False,4.77e-05,success,,5.0,15,7,15,8,0,0
+problem3,search,minimax,,,reverse,,,True,reverse/minimax,3,True,6.42e-05,success,,5.0,15,7,15,8,0,0
+problem3,search,alpha_beta,,,reverse,,,True,reverse/alpha_beta,1,True,0.0001016,success,,5.0,14,7,15,7,1,1
+problem3,search,alpha_beta,,,reverse,,,True,reverse/alpha_beta,2,False,8.6e-05,success,,5.0,14,7,15,7,1,1
+problem3,search,alpha_beta,,,reverse,,,True,reverse/alpha_beta,3,False,0.0001817,success,,5.0,14,7,15,7,1,1
