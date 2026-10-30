@@ -1,0 +1,771 @@
+{
+  "labels": [
+    "A",
+    "B",
+    "T1",
+    "T2",
+    "T3",
+    "T4"
+  ],
+  "distance_matrix": [
+    [
+      0,
+      12,
+      10,
+      4,
+      8,
+      8
+    ],
+    [
+      12,
+      0,
+      8,
+      8,
+      4,
+      10
+    ],
+    [
+      10,
+      8,
+      0,
+      6,
+      6,
+      12
+    ],
+    [
+      4,
+      8,
+      6,
+      0,
+      6,
+      6
+    ],
+    [
+      8,
+      4,
+      6,
+      6,
+      0,
+      6
+    ],
+    [
+      8,
+      10,
+      12,
+      6,
+      6,
+      0
+    ]
+  ],
+  "decisions": [
+    {
+      "algorithm": "minimax",
+      "depth_limit": 2,
+      "move_order": "input",
+      "best_target": "T1",
+      "best_value": 1,
+      "principal_variation": [
+        "T1",
+        "T4"
+      ],
+      "states": [
+        {
+          "position_a": "A",
+          "position_b": "B",
+          "remaining": [
+            "T1",
+            "T2",
+            "T3",
+            "T4"
+          ],
+          "score_a": 0,
+          "score_b": 0,
+          "current_player": "A"
+        },
+        {
+          "position_a": "T1",
+          "position_b": "B",
+          "remaining": [
+            "T2",
+            "T3",
+            "T4"
+          ],
+          "score_a": 3,
+          "score_b": 0,
+          "current_player": "B"
+        },
+        {
+          "position_a": "T1",
+          "position_b": "T4",
+          "remaining": [
+            "T2",
+            "T3"
+          ],
+          "score_a": 3,
+          "score_b": 2,
+          "current_player": "A"
+        }
+      ]
+    },
+    {
+      "algorithm": "alpha_beta",
+      "depth_limit": 2,
+      "move_order": "input",
+      "best_target": "T1",
+      "best_value": 1,
+      "principal_variation": [
+        "T1",
+        "T4"
+      ],
+      "states": [
+        {
+          "position_a": "A",
+          "position_b": "B",
+          "remaining": [
+            "T1",
+            "T2",
+            "T3",
+            "T4"
+          ],
+          "score_a": 0,
+          "score_b": 0,
+          "current_player": "A"
+        },
+        {
+          "position_a": "T1",
+          "position_b": "B",
+          "remaining": [
+            "T2",
+            "T3",
+            "T4"
+          ],
+          "score_a": 3,
+          "score_b": 0,
+          "current_player": "B"
+        },
+        {
+          "position_a": "T1",
+          "position_b": "T4",
+          "remaining": [
+            "T2",
+            "T3"
+          ],
+          "score_a": 3,
+          "score_b": 2,
+          "current_player": "A"
+        }
+      ]
+    },
+    {
+      "algorithm": "minimax",
+      "depth_limit": 2,
+      "move_order": "reverse",
+      "best_target": "T1",
+      "best_value": 1,
+      "principal_variation": [
+        "T1",
+        "T4"
+      ],
+      "states": [
+        {
+          "position_a": "A",
+          "position_b": "B",
+          "remaining": [
+            "T1",
+            "T2",
+            "T3",
+            "T4"
+          ],
+          "score_a": 0,
+          "score_b": 0,
+          "current_player": "A"
+        },
+        {
+          "position_a": "T1",
+          "position_b": "B",
+          "remaining": [
+            "T2",
+            "T3",
+            "T4"
+          ],
+          "score_a": 3,
+          "score_b": 0,
+          "current_player": "B"
+        },
+        {
+          "position_a": "T1",
+          "position_b": "T4",
+          "remaining": [
+            "T2",
+            "T3"
+          ],
+          "score_a": 3,
+          "score_b": 2,
+          "current_player": "A"
+        }
+      ]
+    },
+    {
+      "algorithm": "alpha_beta",
+      "depth_limit": 2,
+      "move_order": "reverse",
+      "best_target": "T1",
+      "best_value": 1,
+      "principal_variation": [
+        "T1",
+        "T4"
+      ],
+      "states": [
+        {
+          "position_a": "A",
+          "position_b": "B",
+          "remaining": [
+            "T1",
+            "T2",
+            "T3",
+            "T4"
+          ],
+          "score_a": 0,
+          "score_b": 0,
+          "current_player": "A"
+        },
+        {
+          "position_a": "T1",
+          "position_b": "B",
+          "remaining": [
+            "T2",
+            "T3",
+            "T4"
+          ],
+          "score_a": 3,
+          "score_b": 0,
+          "current_player": "B"
+        },
+        {
+          "position_a": "T1",
+          "position_b": "T4",
+          "remaining": [
+            "T2",
+            "T3"
+          ],
+          "score_a": 3,
+          "score_b": 2,
+          "current_player": "A"
+        }
+      ]
+    },
+    {
+      "algorithm": "minimax",
+      "depth_limit": 2,
+      "move_order": "gain",
+      "best_target": "T1",
+      "best_value": 1,
+      "principal_variation": [
+        "T1",
+        "T4"
+      ],
+      "states": [
+        {
+          "position_a": "A",
+          "position_b": "B",
+          "remaining": [
+            "T1",
+            "T2",
+            "T3",
+            "T4"
+          ],
+          "score_a": 0,
+          "score_b": 0,
+          "current_player": "A"
+        },
+        {
+          "position_a": "T1",
+          "position_b": "B",
+          "remaining": [
+            "T2",
+            "T3",
+            "T4"
+          ],
+          "score_a": 3,
+          "score_b": 0,
+          "current_player": "B"
+        },
+        {
+          "position_a": "T1",
+          "position_b": "T4",
+          "remaining": [
+            "T2",
+            "T3"
+          ],
+          "score_a": 3,
+          "score_b": 2,
+          "current_player": "A"
+        }
+      ]
+    },
+    {
+      "algorithm": "alpha_beta",
+      "depth_limit": 2,
+      "move_order": "gain",
+      "best_target": "T1",
+      "best_value": 1,
+      "principal_variation": [
+        "T1",
+        "T4"
+      ],
+      "states": [
+        {
+          "position_a": "A",
+          "position_b": "B",
+          "remaining": [
+            "T1",
+            "T2",
+            "T3",
+            "T4"
+          ],
+          "score_a": 0,
+          "score_b": 0,
+          "current_player": "A"
+        },
+        {
+          "position_a": "T1",
+          "position_b": "B",
+          "remaining": [
+            "T2",
+            "T3",
+            "T4"
+          ],
+          "score_a": 3,
+          "score_b": 0,
+          "current_player": "B"
+        },
+        {
+          "position_a": "T1",
+          "position_b": "T4",
+          "remaining": [
+            "T2",
+            "T3"
+          ],
+          "score_a": 3,
+          "score_b": 2,
+          "current_player": "A"
+        }
+      ]
+    },
+    {
+      "algorithm": "minimax",
+      "depth_limit": 4,
+      "move_order": "input",
+      "best_target": "T1",
+      "best_value": 6,
+      "principal_variation": [
+        "T1",
+        "T3",
+        "T4",
+        "T2"
+      ],
+      "states": [
+        {
+          "position_a": "A",
+          "position_b": "B",
+          "remaining": [
+            "T1",
+            "T2",
+            "T3",
+            "T4"
+          ],
+          "score_a": 0,
+          "score_b": 0,
+          "current_player": "A"
+        },
+        {
+          "position_a": "T1",
+          "position_b": "B",
+          "remaining": [
+            "T2",
+            "T3",
+            "T4"
+          ],
+          "score_a": 3,
+          "score_b": 0,
+          "current_player": "B"
+        },
+        {
+          "position_a": "T1",
+          "position_b": "T3",
+          "remaining": [
+            "T2",
+            "T4"
+          ],
+          "score_a": 3,
+          "score_b": -3,
+          "current_player": "A"
+        },
+        {
+          "position_a": "T4",
+          "position_b": "T3",
+          "remaining": [
+            "T2"
+          ],
+          "score_a": 3,
+          "score_b": -3,
+          "current_player": "B"
+        },
+        {
+          "position_a": "T4",
+          "position_b": "T2",
+          "remaining": [],
+          "score_a": 3,
+          "score_b": -3,
+          "current_player": "A"
+        }
+      ]
+    },
+    {
+      "algorithm": "alpha_beta",
+      "depth_limit": 4,
+      "move_order": "input",
+      "best_target": "T1",
+      "best_value": 6,
+      "principal_variation": [
+        "T1",
+        "T3",
+        "T4",
+        "T2"
+      ],
+      "states": [
+        {
+          "position_a": "A",
+          "position_b": "B",
+          "remaining": [
+            "T1",
+            "T2",
+            "T3",
+            "T4"
+          ],
+          "score_a": 0,
+          "score_b": 0,
+          "current_player": "A"
+        },
+        {
+          "position_a": "T1",
+          "position_b": "B",
+          "remaining": [
+            "T2",
+            "T3",
+            "T4"
+          ],
+          "score_a": 3,
+          "score_b": 0,
+          "current_player": "B"
+        },
+        {
+          "position_a": "T1",
+          "position_b": "T3",
+          "remaining": [
+            "T2",
+            "T4"
+          ],
+          "score_a": 3,
+          "score_b": -3,
+          "current_player": "A"
+        },
+        {
+          "position_a": "T4",
+          "position_b": "T3",
+          "remaining": [
+            "T2"
+          ],
+          "score_a": 3,
+          "score_b": -3,
+          "current_player": "B"
+        },
+        {
+          "position_a": "T4",
+          "position_b": "T2",
+          "remaining": [],
+          "score_a": 3,
+          "score_b": -3,
+          "current_player": "A"
+        }
+      ]
+    },
+    {
+      "algorithm": "minimax",
+      "depth_limit": 4,
+      "move_order": "reverse",
+      "best_target": "T2",
+      "best_value": 6,
+      "principal_variation": [
+        "T2",
+        "T3",
+        "T1",
+        "T4"
+      ],
+      "states": [
+        {
+          "position_a": "A",
+          "position_b": "B",
+          "remaining": [
+            "T1",
+            "T2",
+            "T3",
+            "T4"
+          ],
+          "score_a": 0,
+          "score_b": 0,
+          "current_player": "A"
+        },
+        {
+          "position_a": "T2",
+          "position_b": "B",
+          "remaining": [
+            "T1",
+            "T3",
+            "T4"
+          ],
+          "score_a": 2,
+          "score_b": 0,
+          "current_player": "B"
+        },
+        {
+          "position_a": "T2",
+          "position_b": "T3",
+          "remaining": [
+            "T1",
+            "T4"
+          ],
+          "score_a": 2,
+          "score_b": -3,
+          "current_player": "A"
+        },
+        {
+          "position_a": "T1",
+          "position_b": "T3",
+          "remaining": [
+            "T4"
+          ],
+          "score_a": 9,
+          "score_b": -3,
+          "current_player": "B"
+        },
+        {
+          "position_a": "T1",
+          "position_b": "T4",
+          "remaining": [],
+          "score_a": 9,
+          "score_b": 3,
+          "current_player": "A"
+        }
+      ]
+    },
+    {
+      "algorithm": "alpha_beta",
+      "depth_limit": 4,
+      "move_order": "reverse",
+      "best_target": "T2",
+      "best_value": 6,
+      "principal_variation": [
+        "T2",
+        "T3",
+        "T1",
+        "T4"
+      ],
+      "states": [
+        {
+          "position_a": "A",
+          "position_b": "B",
+          "remaining": [
+            "T1",
+            "T2",
+            "T3",
+            "T4"
+          ],
+          "score_a": 0,
+          "score_b": 0,
+          "current_player": "A"
+        },
+        {
+          "position_a": "T2",
+          "position_b": "B",
+          "remaining": [
+            "T1",
+            "T3",
+            "T4"
+          ],
+          "score_a": 2,
+          "score_b": 0,
+          "current_player": "B"
+        },
+        {
+          "position_a": "T2",
+          "position_b": "T3",
+          "remaining": [
+            "T1",
+            "T4"
+          ],
+          "score_a": 2,
+          "score_b": -3,
+          "current_player": "A"
+        },
+        {
+          "position_a": "T1",
+          "position_b": "T3",
+          "remaining": [
+            "T4"
+          ],
+          "score_a": 9,
+          "score_b": -3,
+          "current_player": "B"
+        },
+        {
+          "position_a": "T1",
+          "position_b": "T4",
+          "remaining": [],
+          "score_a": 9,
+          "score_b": 3,
+          "current_player": "A"
+        }
+      ]
+    },
+    {
+      "algorithm": "minimax",
+      "depth_limit": 4,
+      "move_order": "gain",
+      "best_target": "T1",
+      "best_value": 6,
+      "principal_variation": [
+        "T1",
+        "T4",
+        "T2",
+        "T3"
+      ],
+      "states": [
+        {
+          "position_a": "A",
+          "position_b": "B",
+          "remaining": [
+            "T1",
+            "T2",
+            "T3",
+            "T4"
+          ],
+          "score_a": 0,
+          "score_b": 0,
+          "current_player": "A"
+        },
+        {
+          "position_a": "T1",
+          "position_b": "B",
+          "remaining": [
+            "T2",
+            "T3",
+            "T4"
+          ],
+          "score_a": 3,
+          "score_b": 0,
+          "current_player": "B"
+        },
+        {
+          "position_a": "T1",
+          "position_b": "T4",
+          "remaining": [
+            "T2",
+            "T3"
+          ],
+          "score_a": 3,
+          "score_b": 2,
+          "current_player": "A"
+        },
+        {
+          "position_a": "T2",
+          "position_b": "T4",
+          "remaining": [
+            "T3"
+          ],
+          "score_a": 3,
+          "score_b": 2,
+          "current_player": "B"
+        },
+        {
+          "position_a": "T2",
+          "position_b": "T3",
+          "remaining": [],
+          "score_a": 3,
+          "score_b": -3,
+          "current_player": "A"
+        }
+      ]
+    },
+    {
+      "algorithm": "alpha_beta",
+      "depth_limit": 4,
+      "move_order": "gain",
+      "best_target": "T1",
+      "best_value": 6,
+      "principal_variation": [
+        "T1",
+        "T4",
+        "T2",
+        "T3"
+      ],
+      "states": [
+        {
+          "position_a": "A",
+          "position_b": "B",
+          "remaining": [
+            "T1",
+            "T2",
+            "T3",
+            "T4"
+          ],
+          "score_a": 0,
+          "score_b": 0,
+          "current_player": "A"
+        },
+        {
+          "position_a": "T1",
+          "position_b": "B",
+          "remaining": [
+            "T2",
+            "T3",
+            "T4"
+          ],
+          "score_a": 3,
+          "score_b": 0,
+          "current_player": "B"
+        },
+        {
+          "position_a": "T1",
+          "position_b": "T4",
+          "remaining": [
+            "T2",
+            "T3"
+          ],
+          "score_a": 3,
+          "score_b": 2,
+          "current_player": "A"
+        },
+        {
+          "position_a": "T2",
+          "position_b": "T4",
+          "remaining": [
+            "T3"
+          ],
+          "score_a": 3,
+          "score_b": 2,
+          "current_player": "B"
+        },
+        {
+          "position_a": "T2",
+          "position_b": "T3",
+          "remaining": [],
+          "score_a": 3,
+          "score_b": -3,
+          "current_player": "A"
+        }
+      ]
+    }
+  ],
+  "expected_verified": true
+}

@@ -1,0 +1,619 @@
+{
+  "experiment": "Immediate-gain move ordering under changed treasure values",
+  "methodology": {
+    "runner": "scripts/run_all.py",
+    "algorithms_modified": false,
+    "map_changed": false,
+    "depths": [
+      2,
+      4
+    ],
+    "move_orders": [
+      "input",
+      "reverse",
+      "gain"
+    ],
+    "algorithms": [
+      "minimax",
+      "alpha_beta"
+    ],
+    "repeat_count": 3,
+    "selection": "median_elapsed_seconds",
+    "collect_trace": true,
+    "timing_scope": "Search only, including sorting and trace collection; distance precomputation recorded separately.",
+    "comparison_change_ratio": "(gain - baseline) / baseline; negative means fewer operations or lower observed time.",
+    "correctness_reference": "Independent exhaustive game-tree enumeration using the unchanged verified distance matrix; cross-checked against all Minimax root-subtree return values.",
+    "timing_limit": "Three measurements per configuration; observed time differences do not establish a stable speed ranking."
+  },
+  "reproduction_commands": [
+    "python -B -X utf8 scripts/run_all.py --problem 4 --compare --trace --cases configs/exp2_extension_case_A.json --output results/exp2_extension_case_A",
+    "python -B -X utf8 scripts/run_all.py --problem 4 --compare --trace --cases configs/exp2_extension_case_B.json --output results/exp2_extension_case_B"
+  ],
+  "comparisons": [
+    {
+      "scenario": "A",
+      "depth_limit": 2,
+      "treasure_values": {
+        "T1": 3,
+        "T2": 12,
+        "T3": 4,
+        "T4": 11
+      },
+      "config": "configs/exp2_extension_case_A.json",
+      "root_immediate_gains": {
+        "T1": -7,
+        "T2": 8,
+        "T3": -4,
+        "T4": 3
+      },
+      "gain_root_order": [
+        "T2",
+        "T4",
+        "T3",
+        "T1"
+      ],
+      "root_minimax_values": {
+        "T1": -11,
+        "T2": 7,
+        "T3": -8,
+        "T4": -1
+      },
+      "optimal_first_targets": [
+        "T2"
+      ],
+      "best_value": 7,
+      "gain_first_target_is_optimal": true,
+      "search_metrics": {
+        "minimax_input": {
+          "nodes_visited": 17,
+          "nodes_expanded": 5,
+          "nodes_generated": 17,
+          "evaluation_calls": 12,
+          "cutoff_events": 0,
+          "pruned_branches": 0,
+          "elapsed_seconds": 7.72e-05,
+          "repeat_count": 3,
+          "selected_repetition": 2,
+          "best_action": "T2",
+          "best_value": 7.0,
+          "result_directory": "results/exp2_extension_case_A/problem4_treasure_game/depth_2/input_order/minimax"
+        },
+        "alpha_beta_input": {
+          "nodes_visited": 14,
+          "nodes_expanded": 5,
+          "nodes_generated": 17,
+          "evaluation_calls": 9,
+          "cutoff_events": 2,
+          "pruned_branches": 3,
+          "elapsed_seconds": 4.9e-05,
+          "repeat_count": 3,
+          "selected_repetition": 2,
+          "best_action": "T2",
+          "best_value": 7.0,
+          "result_directory": "results/exp2_extension_case_A/problem4_treasure_game/depth_2/input_order/alpha_beta"
+        },
+        "minimax_reverse": {
+          "nodes_visited": 17,
+          "nodes_expanded": 5,
+          "nodes_generated": 17,
+          "evaluation_calls": 12,
+          "cutoff_events": 0,
+          "pruned_branches": 0,
+          "elapsed_seconds": 9.86e-05,
+          "repeat_count": 3,
+          "selected_repetition": 2,
+          "best_action": "T2",
+          "best_value": 7.0,
+          "result_directory": "results/exp2_extension_case_A/problem4_treasure_game/depth_2/reverse_order/minimax"
+        },
+        "alpha_beta_reverse": {
+          "nodes_visited": 13,
+          "nodes_expanded": 5,
+          "nodes_generated": 17,
+          "evaluation_calls": 8,
+          "cutoff_events": 2,
+          "pruned_branches": 4,
+          "elapsed_seconds": 8.83e-05,
+          "repeat_count": 3,
+          "selected_repetition": 1,
+          "best_action": "T2",
+          "best_value": 7.0,
+          "result_directory": "results/exp2_extension_case_A/problem4_treasure_game/depth_2/reverse_order/alpha_beta"
+        },
+        "minimax_gain": {
+          "nodes_visited": 17,
+          "nodes_expanded": 5,
+          "nodes_generated": 17,
+          "evaluation_calls": 12,
+          "cutoff_events": 0,
+          "pruned_branches": 0,
+          "elapsed_seconds": 0.000102,
+          "repeat_count": 3,
+          "selected_repetition": 2,
+          "best_action": "T2",
+          "best_value": 7.0,
+          "result_directory": "results/exp2_extension_case_A/problem4_treasure_game/depth_2/gain_order/minimax"
+        },
+        "alpha_beta_gain": {
+          "nodes_visited": 11,
+          "nodes_expanded": 5,
+          "nodes_generated": 17,
+          "evaluation_calls": 6,
+          "cutoff_events": 3,
+          "pruned_branches": 6,
+          "elapsed_seconds": 0.0001054,
+          "repeat_count": 3,
+          "selected_repetition": 2,
+          "best_action": "T2",
+          "best_value": 7.0,
+          "result_directory": "results/exp2_extension_case_A/problem4_treasure_game/depth_2/gain_order/alpha_beta"
+        }
+      },
+      "gain_vs_baselines": {
+        "minimax_input": {
+          "nodes_visited_change": -6,
+          "nodes_visited_change_ratio": -0.35294117647058826,
+          "evaluation_calls_change": -6,
+          "evaluation_calls_change_ratio": -0.5,
+          "elapsed_seconds_change": 2.8199999999999994e-05,
+          "elapsed_seconds_change_ratio": 0.36528497409326416
+        },
+        "alpha_beta_input": {
+          "nodes_visited_change": -3,
+          "nodes_visited_change_ratio": -0.21428571428571427,
+          "evaluation_calls_change": -3,
+          "evaluation_calls_change_ratio": -0.3333333333333333,
+          "elapsed_seconds_change": 5.64e-05,
+          "elapsed_seconds_change_ratio": 1.1510204081632653
+        },
+        "alpha_beta_reverse": {
+          "nodes_visited_change": -2,
+          "nodes_visited_change_ratio": -0.15384615384615385,
+          "evaluation_calls_change": -2,
+          "evaluation_calls_change_ratio": -0.25,
+          "elapsed_seconds_change": 1.7099999999999996e-05,
+          "elapsed_seconds_change_ratio": 0.1936579841449603
+        }
+      }
+    },
+    {
+      "scenario": "A",
+      "depth_limit": 4,
+      "treasure_values": {
+        "T1": 3,
+        "T2": 12,
+        "T3": 4,
+        "T4": 11
+      },
+      "config": "configs/exp2_extension_case_A.json",
+      "root_immediate_gains": {
+        "T1": -7,
+        "T2": 8,
+        "T3": -4,
+        "T4": 3
+      },
+      "gain_root_order": [
+        "T2",
+        "T4",
+        "T3",
+        "T1"
+      ],
+      "root_minimax_values": {
+        "T1": -10,
+        "T2": 14,
+        "T3": 0,
+        "T4": 0
+      },
+      "optimal_first_targets": [
+        "T2"
+      ],
+      "best_value": 14,
+      "gain_first_target_is_optimal": true,
+      "search_metrics": {
+        "minimax_input": {
+          "nodes_visited": 65,
+          "nodes_expanded": 41,
+          "nodes_generated": 65,
+          "evaluation_calls": 24,
+          "cutoff_events": 0,
+          "pruned_branches": 0,
+          "elapsed_seconds": 0.0001852,
+          "repeat_count": 3,
+          "selected_repetition": 2,
+          "best_action": "T2",
+          "best_value": 14.0,
+          "result_directory": "results/exp2_extension_case_A/problem4_treasure_game/depth_4/input_order/minimax"
+        },
+        "alpha_beta_input": {
+          "nodes_visited": 46,
+          "nodes_expanded": 30,
+          "nodes_generated": 51,
+          "evaluation_calls": 16,
+          "cutoff_events": 4,
+          "pruned_branches": 5,
+          "elapsed_seconds": 0.0001624,
+          "repeat_count": 3,
+          "selected_repetition": 2,
+          "best_action": "T2",
+          "best_value": 14.0,
+          "result_directory": "results/exp2_extension_case_A/problem4_treasure_game/depth_4/input_order/alpha_beta"
+        },
+        "minimax_reverse": {
+          "nodes_visited": 65,
+          "nodes_expanded": 41,
+          "nodes_generated": 65,
+          "evaluation_calls": 24,
+          "cutoff_events": 0,
+          "pruned_branches": 0,
+          "elapsed_seconds": 0.0003439,
+          "repeat_count": 3,
+          "selected_repetition": 1,
+          "best_action": "T2",
+          "best_value": 14.0,
+          "result_directory": "results/exp2_extension_case_A/problem4_treasure_game/depth_4/reverse_order/minimax"
+        },
+        "alpha_beta_reverse": {
+          "nodes_visited": 44,
+          "nodes_expanded": 29,
+          "nodes_generated": 50,
+          "evaluation_calls": 15,
+          "cutoff_events": 5,
+          "pruned_branches": 6,
+          "elapsed_seconds": 0.0002418,
+          "repeat_count": 3,
+          "selected_repetition": 3,
+          "best_action": "T2",
+          "best_value": 14.0,
+          "result_directory": "results/exp2_extension_case_A/problem4_treasure_game/depth_4/reverse_order/alpha_beta"
+        },
+        "minimax_gain": {
+          "nodes_visited": 65,
+          "nodes_expanded": 41,
+          "nodes_generated": 65,
+          "evaluation_calls": 24,
+          "cutoff_events": 0,
+          "pruned_branches": 0,
+          "elapsed_seconds": 0.0002985,
+          "repeat_count": 3,
+          "selected_repetition": 2,
+          "best_action": "T2",
+          "best_value": 14.0,
+          "result_directory": "results/exp2_extension_case_A/problem4_treasure_game/depth_4/gain_order/minimax"
+        },
+        "alpha_beta_gain": {
+          "nodes_visited": 31,
+          "nodes_expanded": 21,
+          "nodes_generated": 39,
+          "evaluation_calls": 10,
+          "cutoff_events": 5,
+          "pruned_branches": 8,
+          "elapsed_seconds": 0.0001856,
+          "repeat_count": 3,
+          "selected_repetition": 2,
+          "best_action": "T2",
+          "best_value": 14.0,
+          "result_directory": "results/exp2_extension_case_A/problem4_treasure_game/depth_4/gain_order/alpha_beta"
+        }
+      },
+      "gain_vs_baselines": {
+        "minimax_input": {
+          "nodes_visited_change": -34,
+          "nodes_visited_change_ratio": -0.5230769230769231,
+          "evaluation_calls_change": -14,
+          "evaluation_calls_change_ratio": -0.5833333333333334,
+          "elapsed_seconds_change": 4.000000000000097e-07,
+          "elapsed_seconds_change_ratio": 0.0021598272138229468
+        },
+        "alpha_beta_input": {
+          "nodes_visited_change": -15,
+          "nodes_visited_change_ratio": -0.32608695652173914,
+          "evaluation_calls_change": -6,
+          "evaluation_calls_change_ratio": -0.375,
+          "elapsed_seconds_change": 2.3200000000000022e-05,
+          "elapsed_seconds_change_ratio": 0.142857142857143
+        },
+        "alpha_beta_reverse": {
+          "nodes_visited_change": -13,
+          "nodes_visited_change_ratio": -0.29545454545454547,
+          "evaluation_calls_change": -5,
+          "evaluation_calls_change_ratio": -0.3333333333333333,
+          "elapsed_seconds_change": -5.6199999999999984e-05,
+          "elapsed_seconds_change_ratio": -0.23242349048800656
+        }
+      }
+    },
+    {
+      "scenario": "B",
+      "depth_limit": 2,
+      "treasure_values": {
+        "T1": 13,
+        "T2": 6,
+        "T3": 1,
+        "T4": 12
+      },
+      "config": "configs/exp2_extension_case_B.json",
+      "root_immediate_gains": {
+        "T1": 3,
+        "T2": 2,
+        "T3": -7,
+        "T4": 4
+      },
+      "gain_root_order": [
+        "T4",
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "root_minimax_values": {
+        "T1": 1,
+        "T2": -3,
+        "T3": -12,
+        "T4": -1
+      },
+      "optimal_first_targets": [
+        "T1"
+      ],
+      "best_value": 1,
+      "gain_first_target_is_optimal": false,
+      "search_metrics": {
+        "minimax_input": {
+          "nodes_visited": 17,
+          "nodes_expanded": 5,
+          "nodes_generated": 17,
+          "evaluation_calls": 12,
+          "cutoff_events": 0,
+          "pruned_branches": 0,
+          "elapsed_seconds": 4.76e-05,
+          "repeat_count": 3,
+          "selected_repetition": 2,
+          "best_action": "T1",
+          "best_value": 1.0,
+          "result_directory": "results/exp2_extension_case_B/problem4_treasure_game/depth_2/input_order/minimax"
+        },
+        "alpha_beta_input": {
+          "nodes_visited": 11,
+          "nodes_expanded": 5,
+          "nodes_generated": 17,
+          "evaluation_calls": 6,
+          "cutoff_events": 3,
+          "pruned_branches": 6,
+          "elapsed_seconds": 5.28e-05,
+          "repeat_count": 3,
+          "selected_repetition": 3,
+          "best_action": "T1",
+          "best_value": 1.0,
+          "result_directory": "results/exp2_extension_case_B/problem4_treasure_game/depth_2/input_order/alpha_beta"
+        },
+        "minimax_reverse": {
+          "nodes_visited": 17,
+          "nodes_expanded": 5,
+          "nodes_generated": 17,
+          "evaluation_calls": 12,
+          "cutoff_events": 0,
+          "pruned_branches": 0,
+          "elapsed_seconds": 6.58e-05,
+          "repeat_count": 3,
+          "selected_repetition": 3,
+          "best_action": "T1",
+          "best_value": 1.0,
+          "result_directory": "results/exp2_extension_case_B/problem4_treasure_game/depth_2/reverse_order/minimax"
+        },
+        "alpha_beta_reverse": {
+          "nodes_visited": 15,
+          "nodes_expanded": 5,
+          "nodes_generated": 17,
+          "evaluation_calls": 10,
+          "cutoff_events": 1,
+          "pruned_branches": 2,
+          "elapsed_seconds": 6.96e-05,
+          "repeat_count": 3,
+          "selected_repetition": 2,
+          "best_action": "T1",
+          "best_value": 1.0,
+          "result_directory": "results/exp2_extension_case_B/problem4_treasure_game/depth_2/reverse_order/alpha_beta"
+        },
+        "minimax_gain": {
+          "nodes_visited": 17,
+          "nodes_expanded": 5,
+          "nodes_generated": 17,
+          "evaluation_calls": 12,
+          "cutoff_events": 0,
+          "pruned_branches": 0,
+          "elapsed_seconds": 0.0001048,
+          "repeat_count": 3,
+          "selected_repetition": 2,
+          "best_action": "T1",
+          "best_value": 1.0,
+          "result_directory": "results/exp2_extension_case_B/problem4_treasure_game/depth_2/gain_order/minimax"
+        },
+        "alpha_beta_gain": {
+          "nodes_visited": 13,
+          "nodes_expanded": 5,
+          "nodes_generated": 17,
+          "evaluation_calls": 8,
+          "cutoff_events": 2,
+          "pruned_branches": 4,
+          "elapsed_seconds": 6.98e-05,
+          "repeat_count": 3,
+          "selected_repetition": 2,
+          "best_action": "T1",
+          "best_value": 1.0,
+          "result_directory": "results/exp2_extension_case_B/problem4_treasure_game/depth_2/gain_order/alpha_beta"
+        }
+      },
+      "gain_vs_baselines": {
+        "minimax_input": {
+          "nodes_visited_change": -4,
+          "nodes_visited_change_ratio": -0.23529411764705882,
+          "evaluation_calls_change": -4,
+          "evaluation_calls_change_ratio": -0.3333333333333333,
+          "elapsed_seconds_change": 2.2200000000000004e-05,
+          "elapsed_seconds_change_ratio": 0.46638655462184886
+        },
+        "alpha_beta_input": {
+          "nodes_visited_change": 2,
+          "nodes_visited_change_ratio": 0.18181818181818182,
+          "evaluation_calls_change": 2,
+          "evaluation_calls_change_ratio": 0.3333333333333333,
+          "elapsed_seconds_change": 1.7e-05,
+          "elapsed_seconds_change_ratio": 0.32196969696969696
+        },
+        "alpha_beta_reverse": {
+          "nodes_visited_change": -2,
+          "nodes_visited_change_ratio": -0.13333333333333333,
+          "evaluation_calls_change": -2,
+          "evaluation_calls_change_ratio": -0.2,
+          "elapsed_seconds_change": 2.0000000000000486e-07,
+          "elapsed_seconds_change_ratio": 0.0028735632183908744
+        }
+      }
+    },
+    {
+      "scenario": "B",
+      "depth_limit": 4,
+      "treasure_values": {
+        "T1": 13,
+        "T2": 6,
+        "T3": 1,
+        "T4": 12
+      },
+      "config": "configs/exp2_extension_case_B.json",
+      "root_immediate_gains": {
+        "T1": 3,
+        "T2": 2,
+        "T3": -7,
+        "T4": 4
+      },
+      "gain_root_order": [
+        "T4",
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "root_minimax_values": {
+        "T1": 6,
+        "T2": 6,
+        "T3": -6,
+        "T4": 4
+      },
+      "optimal_first_targets": [
+        "T1",
+        "T2"
+      ],
+      "best_value": 6,
+      "gain_first_target_is_optimal": false,
+      "search_metrics": {
+        "minimax_input": {
+          "nodes_visited": 65,
+          "nodes_expanded": 41,
+          "nodes_generated": 65,
+          "evaluation_calls": 24,
+          "cutoff_events": 0,
+          "pruned_branches": 0,
+          "elapsed_seconds": 0.0001888,
+          "repeat_count": 3,
+          "selected_repetition": 1,
+          "best_action": "T1",
+          "best_value": 6.0,
+          "result_directory": "results/exp2_extension_case_B/problem4_treasure_game/depth_4/input_order/minimax"
+        },
+        "alpha_beta_input": {
+          "nodes_visited": 38,
+          "nodes_expanded": 25,
+          "nodes_generated": 44,
+          "evaluation_calls": 13,
+          "cutoff_events": 4,
+          "pruned_branches": 6,
+          "elapsed_seconds": 0.0001328,
+          "repeat_count": 3,
+          "selected_repetition": 2,
+          "best_action": "T1",
+          "best_value": 6.0,
+          "result_directory": "results/exp2_extension_case_B/problem4_treasure_game/depth_4/input_order/alpha_beta"
+        },
+        "minimax_reverse": {
+          "nodes_visited": 65,
+          "nodes_expanded": 41,
+          "nodes_generated": 65,
+          "evaluation_calls": 24,
+          "cutoff_events": 0,
+          "pruned_branches": 0,
+          "elapsed_seconds": 0.0003018,
+          "repeat_count": 3,
+          "selected_repetition": 2,
+          "best_action": "T2",
+          "best_value": 6.0,
+          "result_directory": "results/exp2_extension_case_B/problem4_treasure_game/depth_4/reverse_order/minimax"
+        },
+        "alpha_beta_reverse": {
+          "nodes_visited": 43,
+          "nodes_expanded": 28,
+          "nodes_generated": 48,
+          "evaluation_calls": 15,
+          "cutoff_events": 3,
+          "pruned_branches": 5,
+          "elapsed_seconds": 0.0002353,
+          "repeat_count": 3,
+          "selected_repetition": 2,
+          "best_action": "T2",
+          "best_value": 6.0,
+          "result_directory": "results/exp2_extension_case_B/problem4_treasure_game/depth_4/reverse_order/alpha_beta"
+        },
+        "minimax_gain": {
+          "nodes_visited": 65,
+          "nodes_expanded": 41,
+          "nodes_generated": 65,
+          "evaluation_calls": 24,
+          "cutoff_events": 0,
+          "pruned_branches": 0,
+          "elapsed_seconds": 0.0003003,
+          "repeat_count": 3,
+          "selected_repetition": 3,
+          "best_action": "T1",
+          "best_value": 6.0,
+          "result_directory": "results/exp2_extension_case_B/problem4_treasure_game/depth_4/gain_order/minimax"
+        },
+        "alpha_beta_gain": {
+          "nodes_visited": 47,
+          "nodes_expanded": 31,
+          "nodes_generated": 53,
+          "evaluation_calls": 16,
+          "cutoff_events": 5,
+          "pruned_branches": 6,
+          "elapsed_seconds": 0.0003501,
+          "repeat_count": 3,
+          "selected_repetition": 1,
+          "best_action": "T1",
+          "best_value": 6.0,
+          "result_directory": "results/exp2_extension_case_B/problem4_treasure_game/depth_4/gain_order/alpha_beta"
+        }
+      },
+      "gain_vs_baselines": {
+        "minimax_input": {
+          "nodes_visited_change": -18,
+          "nodes_visited_change_ratio": -0.27692307692307694,
+          "evaluation_calls_change": -8,
+          "evaluation_calls_change_ratio": -0.3333333333333333,
+          "elapsed_seconds_change": 0.0001613,
+          "elapsed_seconds_change_ratio": 0.8543432203389829
+        },
+        "alpha_beta_input": {
+          "nodes_visited_change": 9,
+          "nodes_visited_change_ratio": 0.23684210526315788,
+          "evaluation_calls_change": 3,
+          "evaluation_calls_change_ratio": 0.23076923076923078,
+          "elapsed_seconds_change": 0.0002173,
+          "elapsed_seconds_change_ratio": 1.6362951807228916
+        },
+        "alpha_beta_reverse": {
+          "nodes_visited_change": 4,
+          "nodes_visited_change_ratio": 0.09302325581395349,
+          "evaluation_calls_change": 1,
+          "evaluation_calls_change_ratio": 0.06666666666666667,
+          "elapsed_seconds_change": 0.0001148,
+          "elapsed_seconds_change_ratio": 0.4878878028049299
+        }
+      }
+    }
+  ]
+}

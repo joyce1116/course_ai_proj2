@@ -1,0 +1,48 @@
+{
+  "algorithm": "alpha_beta",
+  "status": "success",
+  "best_value": 1.0,
+  "best_action": "T1",
+  "principal_variation": [
+    "T1",
+    "T4"
+  ],
+  "states": [
+    {
+      "position_a": "A",
+      "position_b": "B",
+      "remaining": [
+        "T1",
+        "T2",
+        "T3",
+        "T4"
+      ],
+      "score_a": 0,
+      "score_b": 0,
+      "current_player": "A"
+    },
+    {
+      "position_a": "T1",
+      "position_b": "B",
+      "remaining": [
+        "T2",
+        "T3",
+        "T4"
+      ],
+      "score_a": 3,
+      "score_b": 0,
+      "current_player": "B"
+    },
+    {
+      "position_a": "T1",
+      "position_b": "T4",
+      "remaining": [
+        "T2",
+        "T3"
+      ],
+      "score_a": 3,
+      "score_b": 2,
+      "current_player": "A"
+    }
+  ]
+}

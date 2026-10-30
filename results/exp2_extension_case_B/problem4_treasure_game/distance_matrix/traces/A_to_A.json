@@ -1,0 +1,28 @@
+[
+  {
+    "event": "discover",
+    "state": [
+      0,
+      0
+    ],
+    "depth": 0,
+    "details": {
+      "g": 0.0,
+      "h": 0.0,
+      "f": 0.0
+    }
+  },
+  {
+    "event": "visit",
+    "state": [
+      0,
+      0
+    ],
+    "depth": 0,
+    "details": {
+      "g": 0.0,
+      "h": 0.0,
+      "f": 0.0
+    }
+  }
+]

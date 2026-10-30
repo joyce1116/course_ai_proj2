@@ -1,0 +1,22 @@
+problem4: 3 repetitions per timed search; retaining the median elapsed_seconds run.
+problem4 distance matrix: A, B, T1, T2, T3, T4
+  A: [0, 12, 10, 4, 8, 8]
+  B: [12, 0, 8, 8, 4, 10]
+  T1: [10, 8, 0, 6, 6, 12]
+  T2: [4, 8, 6, 0, 6, 6]
+  T3: [8, 4, 6, 6, 0, 6]
+  T4: [8, 10, 12, 6, 6, 0]
+problem4 H=2 minimax order=input: {'best_target': 'T2', 'best_value': 7}, visited=17, cutoffs=0
+problem4 H=2 alpha_beta order=input: {'best_target': 'T2', 'best_value': 7}, visited=14, cutoffs=2
+problem4 H=2 minimax order=reverse: {'best_target': 'T2', 'best_value': 7}, visited=17, cutoffs=0
+problem4 H=2 alpha_beta order=reverse: {'best_target': 'T2', 'best_value': 7}, visited=13, cutoffs=2
+problem4 H=2 minimax order=gain: {'best_target': 'T2', 'best_value': 7}, visited=17, cutoffs=0
+problem4 H=2 alpha_beta order=gain: {'best_target': 'T2', 'best_value': 7}, visited=11, cutoffs=3
+problem4 H=4 minimax order=input: {'best_target': 'T2', 'best_value': 14}, visited=65, cutoffs=0
+problem4 H=4 alpha_beta order=input: {'best_target': 'T2', 'best_value': 14}, visited=46, cutoffs=4
+problem4 H=4 minimax order=reverse: {'best_target': 'T2', 'best_value': 14}, visited=65, cutoffs=0
+problem4 H=4 alpha_beta order=reverse: {'best_target': 'T2', 'best_value': 14}, visited=44, cutoffs=5
+problem4 H=4 minimax order=gain: {'best_target': 'T2', 'best_value': 14}, visited=65, cutoffs=0
+problem4 H=4 alpha_beta order=gain: {'best_target': 'T2', 'best_value': 14}, visited=31, cutoffs=5
+problem4: all expected results verified.
+Results: D:\course_ai\project2\results\exp2_extension_case_A\problem4_treasure_game

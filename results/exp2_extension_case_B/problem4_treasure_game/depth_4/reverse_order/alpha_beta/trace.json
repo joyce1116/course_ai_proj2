@@ -1,0 +1,1675 @@
+[
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "A",
+      "position_b": "B",
+      "remaining": [
+        "T1",
+        "T2",
+        "T3",
+        "T4"
+      ],
+      "score_a": 0,
+      "score_b": 0,
+      "current_player": "A"
+    },
+    "depth": 0,
+    "details": {
+      "maximizing": true,
+      "alpha": "-Infinity",
+      "beta": "+Infinity"
+    }
+  },
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "T4",
+      "position_b": "B",
+      "remaining": [
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "score_a": 4,
+      "score_b": 0,
+      "current_player": "B"
+    },
+    "depth": 1,
+    "details": {
+      "maximizing": false,
+      "alpha": "-Infinity",
+      "beta": "+Infinity"
+    }
+  },
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "T4",
+      "position_b": "T3",
+      "remaining": [
+        "T1",
+        "T2"
+      ],
+      "score_a": 4,
+      "score_b": -3,
+      "current_player": "A"
+    },
+    "depth": 2,
+    "details": {
+      "maximizing": true,
+      "alpha": "-Infinity",
+      "beta": "+Infinity"
+    }
+  },
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "T2",
+      "position_b": "T3",
+      "remaining": [
+        "T1"
+      ],
+      "score_a": 4,
+      "score_b": -3,
+      "current_player": "B"
+    },
+    "depth": 3,
+    "details": {
+      "maximizing": false,
+      "alpha": "-Infinity",
+      "beta": "+Infinity"
+    }
+  },
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "T2",
+      "position_b": "T1",
+      "remaining": [],
+      "score_a": 4,
+      "score_b": 4,
+      "current_player": "A"
+    },
+    "depth": 4,
+    "details": {
+      "maximizing": true,
+      "alpha": "-Infinity",
+      "beta": "+Infinity"
+    }
+  },
+  {
+    "event": "evaluate",
+    "state": {
+      "position_a": "T2",
+      "position_b": "T1",
+      "remaining": [],
+      "score_a": 4,
+      "score_b": 4,
+      "current_player": "A"
+    },
+    "depth": 4,
+    "details": {
+      "value": 0.0,
+      "reason": "terminal"
+    }
+  },
+  {
+    "event": "return",
+    "state": {
+      "position_a": "T2",
+      "position_b": "T3",
+      "remaining": [
+        "T1"
+      ],
+      "score_a": 4,
+      "score_b": -3,
+      "current_player": "B"
+    },
+    "depth": 3,
+    "details": {
+      "value": 0.0,
+      "alpha": "-Infinity",
+      "beta": 0.0
+    }
+  },
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "T1",
+      "position_b": "T3",
+      "remaining": [
+        "T2"
+      ],
+      "score_a": 5,
+      "score_b": -3,
+      "current_player": "B"
+    },
+    "depth": 3,
+    "details": {
+      "maximizing": false,
+      "alpha": 0.0,
+      "beta": "+Infinity"
+    }
+  },
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "T1",
+      "position_b": "T2",
+      "remaining": [],
+      "score_a": 5,
+      "score_b": -3,
+      "current_player": "A"
+    },
+    "depth": 4,
+    "details": {
+      "maximizing": true,
+      "alpha": 0.0,
+      "beta": "+Infinity"
+    }
+  },
+  {
+    "event": "evaluate",
+    "state": {
+      "position_a": "T1",
+      "position_b": "T2",
+      "remaining": [],
+      "score_a": 5,
+      "score_b": -3,
+      "current_player": "A"
+    },
+    "depth": 4,
+    "details": {
+      "value": 8.0,
+      "reason": "terminal"
+    }
+  },
+  {
+    "event": "return",
+    "state": {
+      "position_a": "T1",
+      "position_b": "T3",
+      "remaining": [
+        "T2"
+      ],
+      "score_a": 5,
+      "score_b": -3,
+      "current_player": "B"
+    },
+    "depth": 3,
+    "details": {
+      "value": 8.0,
+      "alpha": 0.0,
+      "beta": 8.0
+    }
+  },
+  {
+    "event": "return",
+    "state": {
+      "position_a": "T4",
+      "position_b": "T3",
+      "remaining": [
+        "T1",
+        "T2"
+      ],
+      "score_a": 4,
+      "score_b": -3,
+      "current_player": "A"
+    },
+    "depth": 2,
+    "details": {
+      "value": 8.0,
+      "alpha": 8.0,
+      "beta": "+Infinity"
+    }
+  },
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "T4",
+      "position_b": "T2",
+      "remaining": [
+        "T1",
+        "T3"
+      ],
+      "score_a": 4,
+      "score_b": -2,
+      "current_player": "A"
+    },
+    "depth": 2,
+    "details": {
+      "maximizing": true,
+      "alpha": "-Infinity",
+      "beta": 8.0
+    }
+  },
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "T3",
+      "position_b": "T2",
+      "remaining": [
+        "T1"
+      ],
+      "score_a": -1,
+      "score_b": -2,
+      "current_player": "B"
+    },
+    "depth": 3,
+    "details": {
+      "maximizing": false,
+      "alpha": "-Infinity",
+      "beta": 8.0
+    }
+  },
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "T3",
+      "position_b": "T1",
+      "remaining": [],
+      "score_a": -1,
+      "score_b": 5,
+      "current_player": "A"
+    },
+    "depth": 4,
+    "details": {
+      "maximizing": true,
+      "alpha": "-Infinity",
+      "beta": 8.0
+    }
+  },
+  {
+    "event": "evaluate",
+    "state": {
+      "position_a": "T3",
+      "position_b": "T1",
+      "remaining": [],
+      "score_a": -1,
+      "score_b": 5,
+      "current_player": "A"
+    },
+    "depth": 4,
+    "details": {
+      "value": -6.0,
+      "reason": "terminal"
+    }
+  },
+  {
+    "event": "return",
+    "state": {
+      "position_a": "T3",
+      "position_b": "T2",
+      "remaining": [
+        "T1"
+      ],
+      "score_a": -1,
+      "score_b": -2,
+      "current_player": "B"
+    },
+    "depth": 3,
+    "details": {
+      "value": -6.0,
+      "alpha": "-Infinity",
+      "beta": -6.0
+    }
+  },
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "T1",
+      "position_b": "T2",
+      "remaining": [
+        "T3"
+      ],
+      "score_a": 5,
+      "score_b": -2,
+      "current_player": "B"
+    },
+    "depth": 3,
+    "details": {
+      "maximizing": false,
+      "alpha": -6.0,
+      "beta": 8.0
+    }
+  },
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "T1",
+      "position_b": "T3",
+      "remaining": [],
+      "score_a": 5,
+      "score_b": -7,
+      "current_player": "A"
+    },
+    "depth": 4,
+    "details": {
+      "maximizing": true,
+      "alpha": -6.0,
+      "beta": 8.0
+    }
+  },
+  {
+    "event": "evaluate",
+    "state": {
+      "position_a": "T1",
+      "position_b": "T3",
+      "remaining": [],
+      "score_a": 5,
+      "score_b": -7,
+      "current_player": "A"
+    },
+    "depth": 4,
+    "details": {
+      "value": 12.0,
+      "reason": "terminal"
+    }
+  },
+  {
+    "event": "return",
+    "state": {
+      "position_a": "T1",
+      "position_b": "T2",
+      "remaining": [
+        "T3"
+      ],
+      "score_a": 5,
+      "score_b": -2,
+      "current_player": "B"
+    },
+    "depth": 3,
+    "details": {
+      "value": 12.0,
+      "alpha": -6.0,
+      "beta": 8.0
+    }
+  },
+  {
+    "event": "return",
+    "state": {
+      "position_a": "T4",
+      "position_b": "T2",
+      "remaining": [
+        "T1",
+        "T3"
+      ],
+      "score_a": 4,
+      "score_b": -2,
+      "current_player": "A"
+    },
+    "depth": 2,
+    "details": {
+      "value": 12.0,
+      "alpha": 12.0,
+      "beta": 8.0
+    }
+  },
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "T4",
+      "position_b": "T1",
+      "remaining": [
+        "T2",
+        "T3"
+      ],
+      "score_a": 4,
+      "score_b": 5,
+      "current_player": "A"
+    },
+    "depth": 2,
+    "details": {
+      "maximizing": true,
+      "alpha": "-Infinity",
+      "beta": 8.0
+    }
+  },
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "T3",
+      "position_b": "T1",
+      "remaining": [
+        "T2"
+      ],
+      "score_a": -1,
+      "score_b": 5,
+      "current_player": "B"
+    },
+    "depth": 3,
+    "details": {
+      "maximizing": false,
+      "alpha": "-Infinity",
+      "beta": 8.0
+    }
+  },
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "T3",
+      "position_b": "T2",
+      "remaining": [],
+      "score_a": -1,
+      "score_b": 5,
+      "current_player": "A"
+    },
+    "depth": 4,
+    "details": {
+      "maximizing": true,
+      "alpha": "-Infinity",
+      "beta": 8.0
+    }
+  },
+  {
+    "event": "evaluate",
+    "state": {
+      "position_a": "T3",
+      "position_b": "T2",
+      "remaining": [],
+      "score_a": -1,
+      "score_b": 5,
+      "current_player": "A"
+    },
+    "depth": 4,
+    "details": {
+      "value": -6.0,
+      "reason": "terminal"
+    }
+  },
+  {
+    "event": "return",
+    "state": {
+      "position_a": "T3",
+      "position_b": "T1",
+      "remaining": [
+        "T2"
+      ],
+      "score_a": -1,
+      "score_b": 5,
+      "current_player": "B"
+    },
+    "depth": 3,
+    "details": {
+      "value": -6.0,
+      "alpha": "-Infinity",
+      "beta": -6.0
+    }
+  },
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "T2",
+      "position_b": "T1",
+      "remaining": [
+        "T3"
+      ],
+      "score_a": 4,
+      "score_b": 5,
+      "current_player": "B"
+    },
+    "depth": 3,
+    "details": {
+      "maximizing": false,
+      "alpha": -6.0,
+      "beta": 8.0
+    }
+  },
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "T2",
+      "position_b": "T3",
+      "remaining": [],
+      "score_a": 4,
+      "score_b": 0,
+      "current_player": "A"
+    },
+    "depth": 4,
+    "details": {
+      "maximizing": true,
+      "alpha": -6.0,
+      "beta": 8.0
+    }
+  },
+  {
+    "event": "evaluate",
+    "state": {
+      "position_a": "T2",
+      "position_b": "T3",
+      "remaining": [],
+      "score_a": 4,
+      "score_b": 0,
+      "current_player": "A"
+    },
+    "depth": 4,
+    "details": {
+      "value": 4.0,
+      "reason": "terminal"
+    }
+  },
+  {
+    "event": "return",
+    "state": {
+      "position_a": "T2",
+      "position_b": "T1",
+      "remaining": [
+        "T3"
+      ],
+      "score_a": 4,
+      "score_b": 5,
+      "current_player": "B"
+    },
+    "depth": 3,
+    "details": {
+      "value": 4.0,
+      "alpha": -6.0,
+      "beta": 4.0
+    }
+  },
+  {
+    "event": "return",
+    "state": {
+      "position_a": "T4",
+      "position_b": "T1",
+      "remaining": [
+        "T2",
+        "T3"
+      ],
+      "score_a": 4,
+      "score_b": 5,
+      "current_player": "A"
+    },
+    "depth": 2,
+    "details": {
+      "value": 4.0,
+      "alpha": 4.0,
+      "beta": 8.0
+    }
+  },
+  {
+    "event": "return",
+    "state": {
+      "position_a": "T4",
+      "position_b": "B",
+      "remaining": [
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "score_a": 4,
+      "score_b": 0,
+      "current_player": "B"
+    },
+    "depth": 1,
+    "details": {
+      "value": 4.0,
+      "alpha": "-Infinity",
+      "beta": 4.0
+    }
+  },
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "T3",
+      "position_b": "B",
+      "remaining": [
+        "T1",
+        "T2",
+        "T4"
+      ],
+      "score_a": -7,
+      "score_b": 0,
+      "current_player": "B"
+    },
+    "depth": 1,
+    "details": {
+      "maximizing": false,
+      "alpha": 4.0,
+      "beta": "+Infinity"
+    }
+  },
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "T3",
+      "position_b": "T4",
+      "remaining": [
+        "T1",
+        "T2"
+      ],
+      "score_a": -7,
+      "score_b": 2,
+      "current_player": "A"
+    },
+    "depth": 2,
+    "details": {
+      "maximizing": true,
+      "alpha": 4.0,
+      "beta": "+Infinity"
+    }
+  },
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "T2",
+      "position_b": "T4",
+      "remaining": [
+        "T1"
+      ],
+      "score_a": -7,
+      "score_b": 2,
+      "current_player": "B"
+    },
+    "depth": 3,
+    "details": {
+      "maximizing": false,
+      "alpha": 4.0,
+      "beta": "+Infinity"
+    }
+  },
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "T2",
+      "position_b": "T1",
+      "remaining": [],
+      "score_a": -7,
+      "score_b": 3,
+      "current_player": "A"
+    },
+    "depth": 4,
+    "details": {
+      "maximizing": true,
+      "alpha": 4.0,
+      "beta": "+Infinity"
+    }
+  },
+  {
+    "event": "evaluate",
+    "state": {
+      "position_a": "T2",
+      "position_b": "T1",
+      "remaining": [],
+      "score_a": -7,
+      "score_b": 3,
+      "current_player": "A"
+    },
+    "depth": 4,
+    "details": {
+      "value": -10.0,
+      "reason": "terminal"
+    }
+  },
+  {
+    "event": "return",
+    "state": {
+      "position_a": "T2",
+      "position_b": "T4",
+      "remaining": [
+        "T1"
+      ],
+      "score_a": -7,
+      "score_b": 2,
+      "current_player": "B"
+    },
+    "depth": 3,
+    "details": {
+      "value": -10.0,
+      "alpha": 4.0,
+      "beta": -10.0
+    }
+  },
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "T1",
+      "position_b": "T4",
+      "remaining": [
+        "T2"
+      ],
+      "score_a": 0,
+      "score_b": 2,
+      "current_player": "B"
+    },
+    "depth": 3,
+    "details": {
+      "maximizing": false,
+      "alpha": 4.0,
+      "beta": "+Infinity"
+    }
+  },
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "T1",
+      "position_b": "T2",
+      "remaining": [],
+      "score_a": 0,
+      "score_b": 2,
+      "current_player": "A"
+    },
+    "depth": 4,
+    "details": {
+      "maximizing": true,
+      "alpha": 4.0,
+      "beta": "+Infinity"
+    }
+  },
+  {
+    "event": "evaluate",
+    "state": {
+      "position_a": "T1",
+      "position_b": "T2",
+      "remaining": [],
+      "score_a": 0,
+      "score_b": 2,
+      "current_player": "A"
+    },
+    "depth": 4,
+    "details": {
+      "value": -2.0,
+      "reason": "terminal"
+    }
+  },
+  {
+    "event": "return",
+    "state": {
+      "position_a": "T1",
+      "position_b": "T4",
+      "remaining": [
+        "T2"
+      ],
+      "score_a": 0,
+      "score_b": 2,
+      "current_player": "B"
+    },
+    "depth": 3,
+    "details": {
+      "value": -2.0,
+      "alpha": 4.0,
+      "beta": -2.0
+    }
+  },
+  {
+    "event": "return",
+    "state": {
+      "position_a": "T3",
+      "position_b": "T4",
+      "remaining": [
+        "T1",
+        "T2"
+      ],
+      "score_a": -7,
+      "score_b": 2,
+      "current_player": "A"
+    },
+    "depth": 2,
+    "details": {
+      "value": -2.0,
+      "alpha": 4.0,
+      "beta": "+Infinity"
+    }
+  },
+  {
+    "event": "cutoff",
+    "state": {
+      "position_a": "T3",
+      "position_b": "B",
+      "remaining": [
+        "T1",
+        "T2",
+        "T4"
+      ],
+      "score_a": -7,
+      "score_b": 0,
+      "current_player": "B"
+    },
+    "depth": 1,
+    "details": {
+      "alpha": 4.0,
+      "beta": -2.0,
+      "value": -2.0,
+      "pruned_branches": 2,
+      "pruned_actions": [
+        "T2",
+        "T1"
+      ]
+    }
+  },
+  {
+    "event": "return",
+    "state": {
+      "position_a": "T3",
+      "position_b": "B",
+      "remaining": [
+        "T1",
+        "T2",
+        "T4"
+      ],
+      "score_a": -7,
+      "score_b": 0,
+      "current_player": "B"
+    },
+    "depth": 1,
+    "details": {
+      "value": -2.0,
+      "alpha": 4.0,
+      "beta": -2.0
+    }
+  },
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "T2",
+      "position_b": "B",
+      "remaining": [
+        "T1",
+        "T3",
+        "T4"
+      ],
+      "score_a": 2,
+      "score_b": 0,
+      "current_player": "B"
+    },
+    "depth": 1,
+    "details": {
+      "maximizing": false,
+      "alpha": 4.0,
+      "beta": "+Infinity"
+    }
+  },
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "T2",
+      "position_b": "T4",
+      "remaining": [
+        "T1",
+        "T3"
+      ],
+      "score_a": 2,
+      "score_b": 2,
+      "current_player": "A"
+    },
+    "depth": 2,
+    "details": {
+      "maximizing": true,
+      "alpha": 4.0,
+      "beta": "+Infinity"
+    }
+  },
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "T3",
+      "position_b": "T4",
+      "remaining": [
+        "T1"
+      ],
+      "score_a": -3,
+      "score_b": 2,
+      "current_player": "B"
+    },
+    "depth": 3,
+    "details": {
+      "maximizing": false,
+      "alpha": 4.0,
+      "beta": "+Infinity"
+    }
+  },
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "T3",
+      "position_b": "T1",
+      "remaining": [],
+      "score_a": -3,
+      "score_b": 3,
+      "current_player": "A"
+    },
+    "depth": 4,
+    "details": {
+      "maximizing": true,
+      "alpha": 4.0,
+      "beta": "+Infinity"
+    }
+  },
+  {
+    "event": "evaluate",
+    "state": {
+      "position_a": "T3",
+      "position_b": "T1",
+      "remaining": [],
+      "score_a": -3,
+      "score_b": 3,
+      "current_player": "A"
+    },
+    "depth": 4,
+    "details": {
+      "value": -6.0,
+      "reason": "terminal"
+    }
+  },
+  {
+    "event": "return",
+    "state": {
+      "position_a": "T3",
+      "position_b": "T4",
+      "remaining": [
+        "T1"
+      ],
+      "score_a": -3,
+      "score_b": 2,
+      "current_player": "B"
+    },
+    "depth": 3,
+    "details": {
+      "value": -6.0,
+      "alpha": 4.0,
+      "beta": -6.0
+    }
+  },
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "T1",
+      "position_b": "T4",
+      "remaining": [
+        "T3"
+      ],
+      "score_a": 9,
+      "score_b": 2,
+      "current_player": "B"
+    },
+    "depth": 3,
+    "details": {
+      "maximizing": false,
+      "alpha": 4.0,
+      "beta": "+Infinity"
+    }
+  },
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "T1",
+      "position_b": "T3",
+      "remaining": [],
+      "score_a": 9,
+      "score_b": -3,
+      "current_player": "A"
+    },
+    "depth": 4,
+    "details": {
+      "maximizing": true,
+      "alpha": 4.0,
+      "beta": "+Infinity"
+    }
+  },
+  {
+    "event": "evaluate",
+    "state": {
+      "position_a": "T1",
+      "position_b": "T3",
+      "remaining": [],
+      "score_a": 9,
+      "score_b": -3,
+      "current_player": "A"
+    },
+    "depth": 4,
+    "details": {
+      "value": 12.0,
+      "reason": "terminal"
+    }
+  },
+  {
+    "event": "return",
+    "state": {
+      "position_a": "T1",
+      "position_b": "T4",
+      "remaining": [
+        "T3"
+      ],
+      "score_a": 9,
+      "score_b": 2,
+      "current_player": "B"
+    },
+    "depth": 3,
+    "details": {
+      "value": 12.0,
+      "alpha": 4.0,
+      "beta": 12.0
+    }
+  },
+  {
+    "event": "return",
+    "state": {
+      "position_a": "T2",
+      "position_b": "T4",
+      "remaining": [
+        "T1",
+        "T3"
+      ],
+      "score_a": 2,
+      "score_b": 2,
+      "current_player": "A"
+    },
+    "depth": 2,
+    "details": {
+      "value": 12.0,
+      "alpha": 12.0,
+      "beta": "+Infinity"
+    }
+  },
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "T2",
+      "position_b": "T3",
+      "remaining": [
+        "T1",
+        "T4"
+      ],
+      "score_a": 2,
+      "score_b": -3,
+      "current_player": "A"
+    },
+    "depth": 2,
+    "details": {
+      "maximizing": true,
+      "alpha": 4.0,
+      "beta": 12.0
+    }
+  },
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "T4",
+      "position_b": "T3",
+      "remaining": [
+        "T1"
+      ],
+      "score_a": 8,
+      "score_b": -3,
+      "current_player": "B"
+    },
+    "depth": 3,
+    "details": {
+      "maximizing": false,
+      "alpha": 4.0,
+      "beta": 12.0
+    }
+  },
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "T4",
+      "position_b": "T1",
+      "remaining": [],
+      "score_a": 8,
+      "score_b": 4,
+      "current_player": "A"
+    },
+    "depth": 4,
+    "details": {
+      "maximizing": true,
+      "alpha": 4.0,
+      "beta": 12.0
+    }
+  },
+  {
+    "event": "evaluate",
+    "state": {
+      "position_a": "T4",
+      "position_b": "T1",
+      "remaining": [],
+      "score_a": 8,
+      "score_b": 4,
+      "current_player": "A"
+    },
+    "depth": 4,
+    "details": {
+      "value": 4.0,
+      "reason": "terminal"
+    }
+  },
+  {
+    "event": "return",
+    "state": {
+      "position_a": "T4",
+      "position_b": "T3",
+      "remaining": [
+        "T1"
+      ],
+      "score_a": 8,
+      "score_b": -3,
+      "current_player": "B"
+    },
+    "depth": 3,
+    "details": {
+      "value": 4.0,
+      "alpha": 4.0,
+      "beta": 4.0
+    }
+  },
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "T1",
+      "position_b": "T3",
+      "remaining": [
+        "T4"
+      ],
+      "score_a": 9,
+      "score_b": -3,
+      "current_player": "B"
+    },
+    "depth": 3,
+    "details": {
+      "maximizing": false,
+      "alpha": 4.0,
+      "beta": 12.0
+    }
+  },
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "T1",
+      "position_b": "T4",
+      "remaining": [],
+      "score_a": 9,
+      "score_b": 3,
+      "current_player": "A"
+    },
+    "depth": 4,
+    "details": {
+      "maximizing": true,
+      "alpha": 4.0,
+      "beta": 12.0
+    }
+  },
+  {
+    "event": "evaluate",
+    "state": {
+      "position_a": "T1",
+      "position_b": "T4",
+      "remaining": [],
+      "score_a": 9,
+      "score_b": 3,
+      "current_player": "A"
+    },
+    "depth": 4,
+    "details": {
+      "value": 6.0,
+      "reason": "terminal"
+    }
+  },
+  {
+    "event": "return",
+    "state": {
+      "position_a": "T1",
+      "position_b": "T3",
+      "remaining": [
+        "T4"
+      ],
+      "score_a": 9,
+      "score_b": -3,
+      "current_player": "B"
+    },
+    "depth": 3,
+    "details": {
+      "value": 6.0,
+      "alpha": 4.0,
+      "beta": 6.0
+    }
+  },
+  {
+    "event": "return",
+    "state": {
+      "position_a": "T2",
+      "position_b": "T3",
+      "remaining": [
+        "T1",
+        "T4"
+      ],
+      "score_a": 2,
+      "score_b": -3,
+      "current_player": "A"
+    },
+    "depth": 2,
+    "details": {
+      "value": 6.0,
+      "alpha": 6.0,
+      "beta": 12.0
+    }
+  },
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "T2",
+      "position_b": "T1",
+      "remaining": [
+        "T3",
+        "T4"
+      ],
+      "score_a": 2,
+      "score_b": 5,
+      "current_player": "A"
+    },
+    "depth": 2,
+    "details": {
+      "maximizing": true,
+      "alpha": 4.0,
+      "beta": 6.0
+    }
+  },
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "T4",
+      "position_b": "T1",
+      "remaining": [
+        "T3"
+      ],
+      "score_a": 8,
+      "score_b": 5,
+      "current_player": "B"
+    },
+    "depth": 3,
+    "details": {
+      "maximizing": false,
+      "alpha": 4.0,
+      "beta": 6.0
+    }
+  },
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "T4",
+      "position_b": "T3",
+      "remaining": [],
+      "score_a": 8,
+      "score_b": 0,
+      "current_player": "A"
+    },
+    "depth": 4,
+    "details": {
+      "maximizing": true,
+      "alpha": 4.0,
+      "beta": 6.0
+    }
+  },
+  {
+    "event": "evaluate",
+    "state": {
+      "position_a": "T4",
+      "position_b": "T3",
+      "remaining": [],
+      "score_a": 8,
+      "score_b": 0,
+      "current_player": "A"
+    },
+    "depth": 4,
+    "details": {
+      "value": 8.0,
+      "reason": "terminal"
+    }
+  },
+  {
+    "event": "return",
+    "state": {
+      "position_a": "T4",
+      "position_b": "T1",
+      "remaining": [
+        "T3"
+      ],
+      "score_a": 8,
+      "score_b": 5,
+      "current_player": "B"
+    },
+    "depth": 3,
+    "details": {
+      "value": 8.0,
+      "alpha": 4.0,
+      "beta": 6.0
+    }
+  },
+  {
+    "event": "cutoff",
+    "state": {
+      "position_a": "T2",
+      "position_b": "T1",
+      "remaining": [
+        "T3",
+        "T4"
+      ],
+      "score_a": 2,
+      "score_b": 5,
+      "current_player": "A"
+    },
+    "depth": 2,
+    "details": {
+      "alpha": 8.0,
+      "beta": 6.0,
+      "value": 8.0,
+      "pruned_branches": 1,
+      "pruned_actions": [
+        "T3"
+      ]
+    }
+  },
+  {
+    "event": "return",
+    "state": {
+      "position_a": "T2",
+      "position_b": "T1",
+      "remaining": [
+        "T3",
+        "T4"
+      ],
+      "score_a": 2,
+      "score_b": 5,
+      "current_player": "A"
+    },
+    "depth": 2,
+    "details": {
+      "value": 8.0,
+      "alpha": 8.0,
+      "beta": 6.0
+    }
+  },
+  {
+    "event": "return",
+    "state": {
+      "position_a": "T2",
+      "position_b": "B",
+      "remaining": [
+        "T1",
+        "T3",
+        "T4"
+      ],
+      "score_a": 2,
+      "score_b": 0,
+      "current_player": "B"
+    },
+    "depth": 1,
+    "details": {
+      "value": 6.0,
+      "alpha": 4.0,
+      "beta": 6.0
+    }
+  },
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "T1",
+      "position_b": "B",
+      "remaining": [
+        "T2",
+        "T3",
+        "T4"
+      ],
+      "score_a": 3,
+      "score_b": 0,
+      "current_player": "B"
+    },
+    "depth": 1,
+    "details": {
+      "maximizing": false,
+      "alpha": 6.0,
+      "beta": "+Infinity"
+    }
+  },
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "T1",
+      "position_b": "T4",
+      "remaining": [
+        "T2",
+        "T3"
+      ],
+      "score_a": 3,
+      "score_b": 2,
+      "current_player": "A"
+    },
+    "depth": 2,
+    "details": {
+      "maximizing": true,
+      "alpha": 6.0,
+      "beta": "+Infinity"
+    }
+  },
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "T3",
+      "position_b": "T4",
+      "remaining": [
+        "T2"
+      ],
+      "score_a": -2,
+      "score_b": 2,
+      "current_player": "B"
+    },
+    "depth": 3,
+    "details": {
+      "maximizing": false,
+      "alpha": 6.0,
+      "beta": "+Infinity"
+    }
+  },
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "T3",
+      "position_b": "T2",
+      "remaining": [],
+      "score_a": -2,
+      "score_b": 2,
+      "current_player": "A"
+    },
+    "depth": 4,
+    "details": {
+      "maximizing": true,
+      "alpha": 6.0,
+      "beta": "+Infinity"
+    }
+  },
+  {
+    "event": "evaluate",
+    "state": {
+      "position_a": "T3",
+      "position_b": "T2",
+      "remaining": [],
+      "score_a": -2,
+      "score_b": 2,
+      "current_player": "A"
+    },
+    "depth": 4,
+    "details": {
+      "value": -4.0,
+      "reason": "terminal"
+    }
+  },
+  {
+    "event": "return",
+    "state": {
+      "position_a": "T3",
+      "position_b": "T4",
+      "remaining": [
+        "T2"
+      ],
+      "score_a": -2,
+      "score_b": 2,
+      "current_player": "B"
+    },
+    "depth": 3,
+    "details": {
+      "value": -4.0,
+      "alpha": 6.0,
+      "beta": -4.0
+    }
+  },
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "T2",
+      "position_b": "T4",
+      "remaining": [
+        "T3"
+      ],
+      "score_a": 3,
+      "score_b": 2,
+      "current_player": "B"
+    },
+    "depth": 3,
+    "details": {
+      "maximizing": false,
+      "alpha": 6.0,
+      "beta": "+Infinity"
+    }
+  },
+  {
+    "event": "visit",
+    "state": {
+      "position_a": "T2",
+      "position_b": "T3",
+      "remaining": [],
+      "score_a": 3,
+      "score_b": -3,
+      "current_player": "A"
+    },
+    "depth": 4,
+    "details": {
+      "maximizing": true,
+      "alpha": 6.0,
+      "beta": "+Infinity"
+    }
+  },
+  {
+    "event": "evaluate",
+    "state": {
+      "position_a": "T2",
+      "position_b": "T3",
+      "remaining": [],
+      "score_a": 3,
+      "score_b": -3,
+      "current_player": "A"
+    },
+    "depth": 4,
+    "details": {
+      "value": 6.0,
+      "reason": "terminal"
+    }
+  },
+  {
+    "event": "return",
+    "state": {
+      "position_a": "T2",
+      "position_b": "T4",
+      "remaining": [
+        "T3"
+      ],
+      "score_a": 3,
+      "score_b": 2,
+      "current_player": "B"
+    },
+    "depth": 3,
+    "details": {
+      "value": 6.0,
+      "alpha": 6.0,
+      "beta": 6.0
+    }
+  },
+  {
+    "event": "return",
+    "state": {
+      "position_a": "T1",
+      "position_b": "T4",
+      "remaining": [
+        "T2",
+        "T3"
+      ],
+      "score_a": 3,
+      "score_b": 2,
+      "current_player": "A"
+    },
+    "depth": 2,
+    "details": {
+      "value": 6.0,
+      "alpha": 6.0,
+      "beta": "+Infinity"
+    }
+  },
+  {
+    "event": "cutoff",
+    "state": {
+      "position_a": "T1",
+      "position_b": "B",
+      "remaining": [
+        "T2",
+        "T3",
+        "T4"
+      ],
+      "score_a": 3,
+      "score_b": 0,
+      "current_player": "B"
+    },
+    "depth": 1,
+    "details": {
+      "alpha": 6.0,
+      "beta": 6.0,
+      "value": 6.0,
+      "pruned_branches": 2,
+      "pruned_actions": [
+        "T3",
+        "T2"
+      ]
+    }
+  },
+  {
+    "event": "return",
+    "state": {
+      "position_a": "T1",
+      "position_b": "B",
+      "remaining": [
+        "T2",
+        "T3",
+        "T4"
+      ],
+      "score_a": 3,
+      "score_b": 0,
+      "current_player": "B"
+    },
+    "depth": 1,
+    "details": {
+      "value": 6.0,
+      "alpha": 6.0,
+      "beta": 6.0
+    }
+  },
+  {
+    "event": "return",
+    "state": {
+      "position_a": "A",
+      "position_b": "B",
+      "remaining": [
+        "T1",
+        "T2",
+        "T3",
+        "T4"
+      ],
+      "score_a": 0,
+      "score_b": 0,
+      "current_player": "A"
+    },
+    "depth": 0,
+    "details": {
+      "value": 6.0,
+      "alpha": 6.0,
+      "beta": "+Infinity"
+    }
+  }
+]

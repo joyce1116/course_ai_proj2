@@ -1,0 +1,227 @@
+[
+  {
+    "event": "discover",
+    "state": [
+      2,
+      2
+    ],
+    "depth": 0,
+    "details": {
+      "g": 0.0,
+      "h": 4.0,
+      "f": 4.0
+    }
+  },
+  {
+    "event": "visit",
+    "state": [
+      2,
+      2
+    ],
+    "depth": 0,
+    "details": {
+      "g": 0.0,
+      "h": 4.0,
+      "f": 4.0
+    }
+  },
+  {
+    "event": "discover",
+    "state": [
+      1,
+      2
+    ],
+    "depth": 1,
+    "details": {
+      "parent": [
+        2,
+        2
+      ],
+      "action": [
+        1,
+        2
+      ],
+      "g": 6.0,
+      "h": 3.0,
+      "f": 9.0
+    }
+  },
+  {
+    "event": "discover",
+    "state": [
+      2,
+      3
+    ],
+    "depth": 1,
+    "details": {
+      "parent": [
+        2,
+        2
+      ],
+      "action": [
+        2,
+        3
+      ],
+      "g": 1.0,
+      "h": 5.0,
+      "f": 6.0
+    }
+  },
+  {
+    "event": "discover",
+    "state": [
+      2,
+      1
+    ],
+    "depth": 1,
+    "details": {
+      "parent": [
+        2,
+        2
+      ],
+      "action": [
+        2,
+        1
+      ],
+      "g": 1.0,
+      "h": 3.0,
+      "f": 4.0
+    }
+  },
+  {
+    "event": "visit",
+    "state": [
+      2,
+      1
+    ],
+    "depth": 1,
+    "details": {
+      "g": 1.0,
+      "h": 3.0,
+      "f": 4.0
+    }
+  },
+  {
+    "event": "discover",
+    "state": [
+      3,
+      1
+    ],
+    "depth": 2,
+    "details": {
+      "parent": [
+        2,
+        1
+      ],
+      "action": [
+        3,
+        1
+      ],
+      "g": 2.0,
+      "h": 4.0,
+      "f": 6.0
+    }
+  },
+  {
+    "event": "discover",
+    "state": [
+      2,
+      0
+    ],
+    "depth": 2,
+    "details": {
+      "parent": [
+        2,
+        1
+      ],
+      "action": [
+        2,
+        0
+      ],
+      "g": 2.0,
+      "h": 2.0,
+      "f": 4.0
+    }
+  },
+  {
+    "event": "visit",
+    "state": [
+      2,
+      0
+    ],
+    "depth": 2,
+    "details": {
+      "g": 2.0,
+      "h": 2.0,
+      "f": 4.0
+    }
+  },
+  {
+    "event": "discover",
+    "state": [
+      1,
+      0
+    ],
+    "depth": 3,
+    "details": {
+      "parent": [
+        2,
+        0
+      ],
+      "action": [
+        1,
+        0
+      ],
+      "g": 3.0,
+      "h": 1.0,
+      "f": 4.0
+    }
+  },
+  {
+    "event": "visit",
+    "state": [
+      1,
+      0
+    ],
+    "depth": 3,
+    "details": {
+      "g": 3.0,
+      "h": 1.0,
+      "f": 4.0
+    }
+  },
+  {
+    "event": "discover",
+    "state": [
+      0,
+      0
+    ],
+    "depth": 4,
+    "details": {
+      "parent": [
+        1,
+        0
+      ],
+      "action": [
+        0,
+        0
+      ],
+      "g": 4.0,
+      "h": 0.0,
+      "f": 4.0
+    }
+  },
+  {
+    "event": "visit",
+    "state": [
+      0,
+      0
+    ],
+    "depth": 4,
+    "details": {
+      "g": 4.0,
+      "h": 0.0,
+      "f": 4.0
+    }
+  }
+]
