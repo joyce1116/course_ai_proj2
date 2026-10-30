@@ -16,11 +16,11 @@ python -m pip install -r requirements.txt
 
 ## 目录结构
 
-源码、配置和图表逐文件说明。搜索结果按代表性配置展开，同结构的深度、访问顺序和场景合并标注。
+目录树按 `.gitignore` 过滤。源码、配置和图表逐文件说明。搜索结果按代表性配置展开，同结构的深度、访问顺序和场景合并标注。
 
 ```text
 .
-├── .gitignore                             # 缓存、虚拟环境和本地测试的忽略规则
+├── .gitignore                             # 缓存、虚拟环境等文件的忽略规则
 ├── README.md                              # 环境、输入、运行与结果说明
 ├── requirements.txt                       # 绘图依赖及版本范围
 ├── configs/                               # 实验输入
@@ -60,9 +60,6 @@ python -m pip install -r requirements.txt
 │       ├── pathfinding.py                 # 两类寻路任务的路径、启发与开销图
 │       ├── game_tree.py                   # 博弈树数值回传、剪枝位置与效率图
 │       └── treasures.py                   # 宝藏地图、状态、决策、收益与剪枝开销图
-├── tests/                                 # 本地回归测试
-│   ├── .gitkeep                           # 目录占位文件
-│   └── test_repeated_runs.py               # 校验三轮执行、中位数选择与完整结果保留
 ├── results/                               # 搜索结果
 │   ├── .gitkeep                           # 目录占位文件
 │   ├── problem1_maze/                     # 题目一，展示题目级通用文件
