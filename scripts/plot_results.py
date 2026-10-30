@@ -1,4 +1,4 @@
-"""读取已有实验产物，生成报告图表并更新逐图说明。"""
+"""读取已有实验产物，生成报告图表。"""
 
 import argparse
 import os
@@ -14,7 +14,7 @@ from src.visualization import game_tree,pathfinding,treasures
 from src.visualization.catalog import specifications
 from src.visualization.common import configure
 from src.visualization.data import Results
-from src.visualization.export import digest,document
+from src.visualization.export import digest
 
 import matplotlib.pyplot as plt
 
@@ -23,14 +23,13 @@ def main()->int:
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--results",type=Path,default=PROJECT_ROOT/"results")
     parser.add_argument("--output",type=Path,default=PROJECT_ROOT/"report"/"figures")
-    parser.add_argument("--process",type=Path,default=PROJECT_ROOT/"process.md")
     parser.add_argument("--dpi",type=int,default=300)
     args=parser.parse_args()
     if args.dpi<72:
         parser.error("--dpi must be at least 72")
     data=Results(args.results)
     original={path:digest(path) for path in data.root.rglob("*") if path.is_file()}
-    specs=specifications(data)
+    specs=specifications()
     configure()
     output=args.output.resolve()
     output.mkdir(parents=True,exist_ok=True)
@@ -56,10 +55,8 @@ def main()->int:
     current={path:digest(path) for path in data.root.rglob("*") if path.is_file()}
     if current!=original:
         raise RuntimeError("Input results changed during plotting")
-    document(args.process.resolve(),specs,output,args.dpi)
     print(f"Generated {len(specs)} PNG figures; data files unchanged.")
     print(f"Figures: {output}")
-    print(f"Documentation: {args.process.resolve()}")
     return 0
 
 

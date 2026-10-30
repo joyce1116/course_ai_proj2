@@ -8,7 +8,7 @@ from typing import Iterator
 
 @dataclass
 class SearchStats:
-    """计数口径见 process.md；没有执行的操作计为 0，不适用的队列峰值为 None。"""
+    """统计搜索操作；未执行的操作计为 0，不适用的队列峰值为 None。"""
 
     algorithm: str
     elapsed_seconds: float = 0.0

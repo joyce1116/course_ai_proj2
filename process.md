@@ -406,8 +406,8 @@ python -m pip install -r requirements.txt
 python -B -X utf8 scripts/plot_results.py
 ```
 
-绘图支持 `--results` 指定结果根目录、`--output` 指定图表目录、`--process` 指定说明文档、`--dpi` 指定 PNG 分辨率。
-重复执行绘图命令更新同名图和本节说明，不产生新的搜索测量。
+绘图支持 `--results` 指定结果根目录、`--output` 指定图表目录、`--dpi` 指定 PNG 分辨率。
+重复执行绘图命令只更新同名图片，不产生新的搜索测量。逐图说明单独维护，绘图脚本不读取或修改本文件。
 
 ### 数据使用口径
 
@@ -776,3 +776,108 @@ python -B -X utf8 scripts/plot_results.py
 解释边界：每个配置测量 3 次，保留耗时中位数轮次的完整结果；三轮简要记录见 timing_runs.csv，不据此推断稳定速度优势。各点对中位数之和不是预计算总耗时的中位数，也不含建图与文件写入，不能冒充完整程序端到端耗时。
 
 <!-- report-figures:end -->
+
+
+<!-- gain-optimization:begin -->
+## 创新与拓展：基于即时收益排序的 Alpha-Beta 搜索优化
+
+本节是新增图表的使用说明与数据分析备忘，不是正式报告正文。对照 `report2.docx` 后，原报告图 2-15 至 2-17 已讨论输入顺序与逆序的开销、剪枝位置和分阶段耗时。本节增加问题相关的 `gain` 节点排序策略，重点回答：在标准 Alpha-Beta 已有剪枝收益之外，排序还能额外节省多少工作、为什么有效、是否实际更快。原有图表与分析不重绘。
+
+### 策略与对照口径
+
+- 复用 `src/problems/problem4.py` 中已有 `order="gain"`：每次展开后按后继状态的 `utility=Score_A−Score_B` 排序，MAX 降序、MIN 升序。同值保持原输入顺序。
+- 对固定父状态，A 的后继效用为 `U+Gain_A`，B 的后继效用为 `U−Gain_B`，因此该实现等价于双方均优先尝试当前行动者即时收益较大的动作。B 应按 MAX 视角的后继效用升序，不能把双方都写成效用降序。排序发生在各个展开层，不只发生在根节点。
+- 排序只改变动作遍历顺序；所有合法动作仍交由 Alpha-Beta 判定，不改终局评价、深度限制或剪枝条件。它是启发式节点排序优化；本次不新增缓存、额外输入或新算法实现。
+- 四个主对照为：Minimax（输入顺序的完整搜索基线）、Alpha-Beta 输入顺序、Alpha-Beta 逆序、Alpha-Beta gain。三种顺序的 Minimax 均读取并校验，其同深度计数完全一致，计数图只保留一个 Minimax，避免重复。耗时图另列 Minimax gain 作为同排序辅助对照，不能合并不同顺序的 Minimax 耗时。
+- `result.json` 提供最优动作与根值；访问数、评价次数、剪枝计数和耗时实际存放在同目录的 `metrics.csv`；`trace.json` 用于解释边界与分支访问过程；全部三轮耗时来自题目根目录的 `timing_runs.csv`。
+- 剪枝效率用相对完整 Minimax 的访问减少率和评价减少率衡量：`(Minimax−候选)/Minimax`。排序增量收益分别用输入顺序和逆序 Alpha-Beta 作为分母：`(该基线−gain)/该基线`。不同分母的百分比不混用。
+- `evaluation_calls` 统计叶子/深度截断评价；排序读取后继状态的 utility 不计入该计数，但其开销包含在搜索耗时中。全部三轮均开启轨迹，故耗时还包含轨迹记录，且不含距离矩阵预计算和文件导出。
+
+### 文件、复现与核验
+
+新增图片位于 [report/figures/gain_order_optimization](report/figures/gain_order_optimization)，均为 300 dpi PNG，沿用原图的无总标题、无图注样式；轴标签、图例与数值用于读图，详细解释记录于此。
+
+```powershell
+python -B -X utf8 scripts/plot_gain_optimization.py
+```
+
+脚本支持 `--results`（题目四目录）、`--output`、`--dpi`。它只读取已有结果；逐配置核对全部 12 组的结果、指标、三轮中位数、轨迹访问数、评价数、剪枝事件和直接分支数，并验证拆分的根子树访问数加根节点等于总访问数。重复执行仅更新同名图片；本节说明由人工单独维护。所有脚本均无本文件的路径、参数或读写逻辑，删除本文件不会影响运行与绘图。
+
+主要来源：
+
+- [results/problem4_treasure_game/metadata.json](results/problem4_treasure_game/metadata.json)：实验输入快照、H、预期结果、轨迹及重复设置。
+- [results/problem4_treasure_game/timing_runs.csv](results/problem4_treasure_game/timing_runs.csv)：三轮原始计时和选中轮次。
+- [results/problem4_treasure_game/depth_2/gain_order/alpha_beta/result.json](results/problem4_treasure_game/depth_2/gain_order/alpha_beta/result.json)、[results/problem4_treasure_game/depth_4/gain_order/alpha_beta/result.json](results/problem4_treasure_game/depth_4/gain_order/alpha_beta/result.json)：gain 的动作与根值。
+- [results/problem4_treasure_game/depth_2/gain_order/alpha_beta/metrics.csv](results/problem4_treasure_game/depth_2/gain_order/alpha_beta/metrics.csv)、[results/problem4_treasure_game/depth_4/gain_order/alpha_beta/metrics.csv](results/problem4_treasure_game/depth_4/gain_order/alpha_beta/metrics.csv)：gain 的计数与选中轮次耗时。
+- [results/problem4_treasure_game/depth_2/gain_order/alpha_beta/trace.json](results/problem4_treasure_game/depth_2/gain_order/alpha_beta/trace.json)、[results/problem4_treasure_game/depth_4/gain_order/alpha_beta/trace.json](results/problem4_treasure_game/depth_4/gain_order/alpha_beta/trace.json)：gain 的真实搜索过程。
+- 对照组读取同深度 `input_order`、`reverse_order` 以及三种顺序的 `minimax` 同名文件；没有把未访问子树人为补成搜索事件。
+
+### 汇总数据
+
+| H | 算法 / 顺序 | 访问节点 | 评价次数 | 剪枝事件 | 跳过直接分支 | 中位数耗时 µs | 最优首步 / U |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | --- |
+| 2 | Minimax / 输入顺序 | 17 | 12 | 0 | 0 | 74.8 | T2 / -1 |
+| 2 | Alpha-Beta / 输入顺序 | 13 | 8 | 2 | 4 | 81.3 | T2 / -1 |
+| 2 | Alpha-Beta / 逆序 | 16 | 11 | 1 | 1 | 120.1 | T2 / -1 |
+| 2 | Alpha-Beta / gain | 11 | 6 | 3 | 6 | 66.0 | T2 / -1 |
+| 2 | Minimax / gain（辅助） | 17 | 12 | 0 | 0 | 133.3 | T2 / -1 |
+| 4 | Minimax / 输入顺序 | 65 | 24 | 0 | 0 | 178.2 | T3 / 3 |
+| 4 | Alpha-Beta / 输入顺序 | 47 | 16 | 5 | 6 | 170.3 | T3 / 3 |
+| 4 | Alpha-Beta / 逆序 | 46 | 16 | 4 | 5 | 321.4 | T3 / 3 |
+| 4 | Alpha-Beta / gain | 37 | 12 | 6 | 8 | 214.1 | T3 / 3 |
+| 4 | Minimax / gain（辅助） | 65 | 24 | 0 | 0 | 297.3 | T3 / 3 |
+
+### 图 18：gain 排序后的搜索工作量
+
+[查看 PNG](report/figures/gain_order_optimization/18_gain_search_workload.png)
+
+读图方式：左列 H=2，右列 H=4；上排访问节点数，下排叶子评价次数。四根柱依次为完整 Minimax、输入顺序 Alpha-Beta、逆序 Alpha-Beta、gain Alpha-Beta；绿色为优化方案。每根 Alpha-Beta 柱的百分比均相对同深度完整 Minimax，柱高保持原始次数，不使用截断纵轴。
+
+图的含义：验证排序是否在正确性不变的情况下减少实际递归搜索和叶子评价。H=2，gain 访问 11 个节点、评价 6 次，相对完整基线 17/12 分别减少 35.3%/50.0%；H=4，gain 为 37/12，相对 65/24 分别减少 43.1%/50.0%。全部 12 组最优动作与根值均一致：H=2 为 T2 / −1，H=4 为 T3 / 3。
+
+### 图 19：相对三组基线的排序增量收益
+
+[查看 PNG](report/figures/gain_order_optimization/19_gain_incremental_reduction.png)
+
+读图方式：每行指定一个比较基线；前两列为 H=2 的访问/评价，后两列为 H=4 的访问/评价。单元格上行为 gain 相对该行基线的减少率，下行为绝对减少次数；深绿色表示节省比例较高。
+
+图的含义：第一行展示 Alpha-Beta 与排序的合计收益，后两行隔离加入 gain 排序后的增量，避免把标准剪枝的全部收益归给优化。
+
+| H | gain 的比较基线 | 少访问节点 | 访问减少率 | 少评价次数 | 评价减少率 |
+| --- | --- | ---: | ---: | ---: | ---: |
+| 2 | Minimax 输入 | 6 | 35.3% | 6 | 50.0% |
+| 2 | Alpha-Beta 输入 | 2 | 15.4% | 2 | 25.0% |
+| 2 | Alpha-Beta 逆序 | 5 | 31.3% | 5 | 45.5% |
+| 4 | Minimax 输入 | 28 | 43.1% | 12 | 50.0% |
+| 4 | Alpha-Beta 输入 | 10 | 21.3% | 4 | 25.0% |
+| 4 | Alpha-Beta 逆序 | 9 | 19.6% | 4 | 25.0% |
+
+相对输入顺序 Alpha-Beta，H=2 额外少访问 2 个节点、少评价 2 次，H=4 额外少访问 10 个节点、少评价 4 次；节点减少率分别为 15.4%、21.3%。相对逆序，H=2/H=4 分别额外减少 31.3%/19.6% 的节点访问。两种深度下 gain 均优于两个已有固定顺序，但当前证据仅覆盖给定地图与四个宝藏，不能据此断言所有局面都有效。
+
+### 图 20：边界建立与各根子树的工作量
+
+[查看 PNG](report/figures/gain_order_optimization/20_gain_bound_and_subtree_work.png)
+
+读图方式：左列 H=2，右列 H=4。上排按真实 trace 中每个根子树完成的时刻画出累计访问数与根下界 α，点代表子树完成，横线表示两次根更新之间下界保持不变；首个点之前的 −∞ 不绘制。下排按 T1–T4 对齐各根子树的实际访问数，并加入完整 Minimax 作参照。下排不包含根节点，四个目标的计数相加后须再加 1 才是图 18 的总数。
+
+根目标顺序由深度 1 的 visit 提取：输入为 T1→T2→T3→T4，逆序为 T4→T3→T2→T1，gain 为 T2→T1→T3→T4。根处 T2 的即时收益为 2，其余三个均为 −1，所以 gain 先尝试 T2，其余同值目标保持输入顺序。
+
+H=2 机制：gain 在累计访问第 5 个节点时已完成 T2 子树，建立 α=−1；输入顺序到第 9 个节点、逆序到第 13 个节点才建立此下界。此后 gain 的 T1、T3、T4 子树各只访问 2 个节点（子树根和一个评价叶），三者各跳过两个直接分支，共 3 次剪枝、6 个直接分支。例如 T1 子树中，B 先试 T3 后得 β=−4，满足 α=−1≥β，随后 T2/T4 无需搜索。这是从实际轨迹得到的排序—界收紧—提前剪枝证据。
+
+H=4 机制：gain 首个根子树 T2 回传后即建立 α=1；在 T1 子树中，仅搜索 B→T3 的后续分支就得到 β=−5，从而剪去 B→T2/T4。T1 子树由输入顺序的 14 个访问降至 6 个，T2 子树由 14 降至 12 个，T3/T4 仍分别为 12/6，合计多节省 10 个访问。gain 的 6 次剪枝、8 个直接分支对应总访问 37，但直接分支数不是节省的 28 个完整节点。
+
+解释边界：H=4 逆序在累计访问第 29 个节点时已把根 α 提升至 3，早于 gain 的第 31 个节点，但其总访问仍更多（46 对 37）。因此本次收益不能全部归因于更早遇到最终最优根动作；所有展开层的排序、搜索窗口与后续子树大小共同决定总工作量。图上只使用真实根下界，未把剪枝子树回传界当作精确 Minimax 分支值，也未将即时收益排序改成贪心决策。
+
+### 图 21：三轮耗时与排序开销的限制
+
+[查看 PNG](report/figures/gain_order_optimization/21_gain_runtime_repetitions.png)
+
+读图方式：左侧 H=2，右侧 H=4。前四行对应三个对照与 gain，虚线下另列 Minimax gain 辅助对照。小圆点是按轮次轻微错开的三次原始测量，菱形和右侧数值为中位数，水平线仅表示观测到的最小–最大范围，不是误差条或置信区间。单位为 µs。
+
+H=2：gain 为 66.0 µs，较输入顺序 Alpha-Beta 的 81.3 µs 下降 18.8%，较逆序的 120.1 µs 下降 45.0%，较 Minimax 输入的 74.8 µs 下降 11.8%。H=4：gain 为 214.1 µs，虽然访问节点更少，但较输入顺序 Alpha-Beta 的 170.3 µs 增加 25.7%，较 Minimax 输入的 178.2 µs 增加 20.1%；较逆序的 321.4 µs 仍下降 33.4%。
+
+同排序辅助比较：gain Alpha-Beta 相对 gain Minimax 的中位数耗时，H=2 为 66.0/133.3 µs（约 2.02 倍观测加速），H=4 为 214.1/297.3 µs（约 1.39 倍）。这说明在给定排序下剪枝节省了工作，但不能用该比较代替与原始输入顺序的优化对照。Minimax gain 和 Minimax 输入的节点/评价数完全相同，耗时却不同，提示回调排序、排列校验及环境波动等非节点数量因素可能影响总耗时；当前三轮数据无法单独测出各项开销。
+
+分析结论的适用范围：当前可以支持“即时收益排序在给定算例的 H=2/H=4 下，进一步降低 Alpha-Beta 的节点访问与评价次数，且保持结果一致”；不能支持“所有深度都更快”“gain 是最优排序”或“获得新的渐近复杂度改进”。运行时间包含排序与轨迹开销，三轮样本不足以建立稳定速度结论；本节没有新增或重测实验。
+
+<!-- gain-optimization:end -->
